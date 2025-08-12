@@ -3,26 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>After The Pulse — Таймлайн</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>After The Pulse — Timeline</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e0e7eb;
+      color: #222;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      color: #111;
+    }
+    h3 {
+      font-weight: 700;
+      margin-bottom: 3px;
+      font-size: 1.1rem;
+    }
+    p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.3;
+      color: #333;
+    }
+    .subtitle {
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 500;
+      color: #555;
+    }
+    .timeline {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #999 #e0e7eb;
+    }
+    .timeline::-webkit-scrollbar {
+      height: 8px;
+    }
+    .timeline::-webkit-scrollbar-track {
+      background: #e0e7eb;
+    }
+    .timeline::-webkit-scrollbar-thumb {
+      background-color: #999;
+      border-radius: 10px;
+    }
+    .event {
+      background: white;
+      flex: 0 0 180px;
+      border-radius: 6px;
+      padding: 15px 20px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 8px solid #444;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .event:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 15px rgb(0 0 0 / 0.15);
+    }
+    /* Цвета для каждой даты */
+    .year-1986-2005 { border-color: #f97316; }
+    .year-2006-2010 { border-color: #fbbf24; }
+    .year-2011-2012 { border-color: #84cc16; }
+    .year-2013 { border-color: #22d3ee; }
+    .year-2014-2015 { border-color: #ec4899; }
+    .year-2016 { border-color: #3b82f6; }
+
+    .event-year {
+      font-weight: 900;
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+      color: #111;
+    }
+    .event-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #444;
+    }
+    /* Ограничение высоты для всех блоков для ровности */
+    .event p {
+      flex-grow: 1;
+    }
+
+    @media (max-width: 600px) {
+      .timeline {
+        gap: 12px;
+      }
+      .event {
+        flex: 0 0 140px;
+        padding: 12px 15px;
+      }
+      .event-year {
+        font-size: 1rem;
+      }
+      .event-title {
+        font-size: 1rem;
+      }
+      p {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="container">
-    <h1>After The Pulse — краткий фактологичный лор (1986–2016)</h1>
+  <h1>After The Pulse</h1>
+  <div class="subtitle">Краткий фактологичный лор (1986–2016)</div>
 
-    <div class="timeline-wrapper">
-      <nav class="timeline-nav">
-        <ul id="event-list">
-          <!-- Список событий создадим динамически через JS -->
-        </ul>
-      </nav>
-
-      <section class="timeline-content" id="event-content">
-        <p>Выберите событие слева, чтобы увидеть подробности.</p>
-      </section>
+  <div class="timeline">
+    <div class="event year-1986-2005">
+      <div class="event-year">1986–2005</div>
+      <div class="event-title">Создание и стабильность зоны</div>
+      <p>Зона ограничения доступа была создана после аварии и находилась под военным контролем. В течение двух десятилетий территория оставалась сравнительно стабильной: маршруты передвижения, инфраструктура и границы зоны мало менялись, несмотря на постепенное разрушение и заброшенность.</p>
+      <p>Доступ внутрь был ограничен, несанкционированных проникновений почти не фиксировалось.</p>
     </div>
-  </main>
 
-  <script src="script.js"></script>
+    <div class="event year-2006-2010">
+      <div class="event-year">2006–2010</div>
+      <div class="event-title">Появление нестабильных участков</div>
+      <p>Начиная с 2006 года на территории зоны стали фиксироваться локальные нестабильности и участки, где техника и оборудование функционировали ненадёжно, а рельеф изменялся без очевидных причин.</p>
+      <p>Активность проникновения и нелегальной деятельности внутри зоны возросла, что привело к росту конфликтов и ухудшению общего контроля.</p>
+    </div>
+
+    <div class="event year-2011-2012">
+      <div class="event-year">2011–2012</div>
+      <div class="event-title">Изменения конфигурации территории</div>
+      <p>Весной 2011-го произошёл крупный энергетический выброс, который существенно изменил конфигурацию известных территорий, сделав многие маршруты непроходимыми или крайне опасными.</p>
+      <p>В этот период усилились попытки проникновения к центру зоны — часть прежних барьеров была устранена, но контроль над центральной территорией по-прежнему оставался невозможен.</p>
+    </div>
+
+    <div class="event year-2013">
+      <div class="event-year">2013</div>
+      <div class="event-title">Событие «Пульс»</div>
+      <p>14 марта 2013 года произошло крупное подземное событие — мощный геологический толчок, получивший условное название «Пульс».</p>
+      <p>Этот толчок вызвал существенные деформации рельефа на всей территории зоны: обвалы, появление новых провалов и трещин, разрушение объектов инфраструктуры и изменение гидрологических условий.</p>
+      <p>В результате Пульса значительно изменилась структура территории: исчезли прежние ориентиры и маршруты, появились новые опасные участки, ранее доступные зоны стали недоступными. Контроль и разведка осложнились.</p>
+    </div>
+
+    <div class="event year-2014-2015">
+      <div class="event-year">2014–2015</div>
+      <div class="event-title">Фрагментация территории</div>
+      <p>После Пульса зона распалась на серию изолированных кластеров, между которыми сохранились лишь узкие и нестабильные проходы.</p>
+      <p>Передвижение стало затруднено, а поддержание контроля над территориями — практически невозможным.</p>
+      <p>Группировки потеряли влияние, конфликты усилились.</p>
+    </div>
+
+    <div class="event year-2016">
+      <div class="event-year">2016</div>
+      <div class="event-title">Текущая ситуация</div>
+      <p>Зона находится в состоянии постоянных изменений: новые провалы и подвижки рельефа появляются с высокой частотой, что осложняет картографирование и планирование маршрутов.</p>
+      <p>Центральные районы остаются закрытыми из-за нестабильности и концентрации вооружённых групп.</p>
+      <p>Ходят слухи о повторении подземных толчков, вызывая обеспокоенность у обитателей зоны.</p>
+    </div>
+  </div>
 </body>
 </html>
