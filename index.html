@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>КПК-328: Хронология Зоны</title>
+  <title>КПК-328: Хронологія Зони</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* =================================================
-      S.T.A.L.K.E.R. PDA INTERFACE REVAMP by Gemini
+      ПЕРЕРОБКА ІНТЕРФЕЙСУ КПК S.T.A.L.K.E.R. від Gemini
       =================================================
     */
 
@@ -21,19 +21,19 @@
     }
 
     :root {
-      /* Основная палитра КПК */
+      /* Основна палітра КПК */
       --pda-bg: #1a1f1a;
       --pda-bg-lighter: #2a302a;
       --pda-text: #66ff99;
       --pda-text-dark: #44aa66;
       --pda-border: #3a453a;
       
-      /* Акцентные цвета */
-      --color-warning: #ffb433; /* Ржавчина / Янтарь */
-      --color-danger: #ff4d4d;  /* Опасность / Ошибка */
-      --color-info: #55aaff;   /* Системная информация */
+      /* Акцентні кольори */
+      --color-warning: #ffb433; /* Іржа / Бурштин */
+      --color-danger: #ff4d4d;  /* Небезпека / Помилка */
+      --color-info: #55aaff;   /* Системна інформація */
       
-      /* Тени и свечение */
+      /* Тіні та світіння */
       --glow-text: 0 0 5px var(--pda-text), 0 0 10px rgba(102, 255, 153, 0.5);
       --glow-danger: 0 0 8px var(--color-danger);
     }
@@ -50,7 +50,7 @@
       min-height: 100vh;
     }
 
-    /* Эффект старого ЭЛТ-монитора (scanlines) и мерцание */
+    /* Ефект старого ЕПТ-монітора (scanlines) та мерехтіння */
     body::after {
       content: " ";
       display: block;
@@ -80,7 +80,7 @@
       border: 2px solid var(--pda-border);
       padding: 15px;
       box-shadow: 0 0 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(0,0,0,0.7);
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAANElEQVR42u3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAk4wUAASDLrQAAAABJRU5ErkJggg=='); /* Простой шум */
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAANElEQVR42u3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAk4wUAASDLrQAAAABJRU5ErkJggg=='); /* Простий шум */
     }
 
     header {
@@ -90,7 +90,7 @@
       border-bottom: 1px solid var(--pda-border);
     }
 
-    /* Строка состояния КПК */
+    /* Рядок стану КПК */
     .pda-status-bar {
       display: flex;
       justify-content: space-between;
@@ -113,7 +113,7 @@
       margin-bottom: 8px;
     }
     
-    /* Глитч-эффект для заголовка */
+    /* Глітч-ефект для заголовка */
     .glitch {
         position: relative;
         animation: glitch-skew 1s infinite linear alternate-reverse;
@@ -179,7 +179,7 @@
     }
     @keyframes fadeIn { to { opacity: 1; transform: translateX(0); } }
 
-    /* Задержки анимации */
+    /* Затримки анімації */
     .event:nth-child(1) { animation-delay: 0.1s; }
     .event:nth-child(2) { animation-delay: 0.2s; }
     .event:nth-child(3) { animation-delay: 0.3s; }
@@ -189,7 +189,7 @@
 
     .year-marker {
       flex-shrink: 0;
-      width: 64px; /* выровняли по сетке 8px */
+      width: 64px; /* вирівняно по сітці 8px */
       height: 48px;
       display: flex;
       align-items: center;
@@ -270,7 +270,7 @@
     }
     
     .pulse-event::after {
-      content: '[ДАННЫЕ ПОВРЕЖДЕНЫ]';
+      content: '[ДАНІ ПОШКОДЖЕНО]';
       position: absolute;
       top: -10px;
       right: -10px;
@@ -321,12 +321,12 @@
   <div class="pda-screen">
     <header>
       <div class="pda-status-bar">
-        <span class="signal">СИГНАЛ: СЛАБЫЙ <i class="fas fa-wifi"></i></span>
+        <span class="signal">СИГНАЛ: СЛАБКИЙ <i class="fas fa-wifi"></i></span>
         <span class="time" id="pda-time">--:--:--</span>
         <span class="battery">ЗАРЯД: 82% <i class="fas fa-battery-three-quarters"></i></span>
       </div>
-      <h1 class="glitch" data-text="ХРОНОЛОГИЯ ЗОНЫ">ХРОНОЛОГИЯ ЗОНЫ</h1>
-      <div class="subtitle">Файл #734 | Уровень допуска: 2</div>
+      <h1 class="glitch" data-text="ХРОНОЛОГІЯ ЗОНИ">ХРОНОЛОГІЯ ЗОНИ</h1>
+      <div class="subtitle">Файл #734 | Рівень допуску: 2</div>
     </header>
 
     <div class="timeline">
@@ -334,9 +334,9 @@
         <div class="year-marker">1986-05</div>
         <div class="event-content">
           <div class="event-year"><i class="fas fa-shield-alt"></i> 1986–2005</div>
-          <h3 class="event-title">Период изоляции</h3>
-          <p>После катастрофы Зона герметично закрыта. Военный контроль, жесткий периметр. Внутри — тишина и постепенный распад. Нелегальные проникновения редки. Научные группы работают на границах, не рискуя заходить вглубь.</p>
-          <div class="impact-label">Стабильность</div>
+          <h3 class="event-title">Період ізоляції</h3>
+          <p>Після катастрофи Зона герметично закрита. Військовий контроль, жорсткий периметр. Усередині — тиша та поступовий розпад. Нелегальні проникнення рідкісні. Наукові групи працюють на кордонах, не ризикуючи заходити вглиб.</p>
+          <div class="impact-label">Стабільність</div>
         </div>
       </div>
 
@@ -344,9 +344,9 @@
         <div class="year-marker">2006-10</div>
         <div class="event-content">
           <div class="event-year"><i class="fas fa-exclamation-triangle"></i> 2006–2010</div>
-          <h3 class="event-title">Первые аномалии</h3>
-          <p>С докладов патрулей: "пространственные пузыри", сбои в работе электроники. Первые "сталкеры" просачиваются сквозь дыры в Периметре в поисках странных образований — артефактов. Контроль ослабевает.</p>
-          <div class="impact-label">Начало нестабильности</div>
+          <h3 class="event-title">Перші аномалії</h3>
+          <p>Зі звітів патрулів: "просторові міхури", збої в роботі електроніки. Перші "сталкери" просочуються крізь дірки в Периметрі в пошуках дивних утворень — артефактів. Контроль слабшає.</p>
+          <div class="impact-label">Початок нестабільності</div>
         </div>
       </div>
 
@@ -354,9 +354,9 @@
         <div class="year-marker">2011-12</div>
         <div class="event-content">
           <div class="event-year"><i class="fas fa-map-marked-alt"></i> 2011–2012</div>
-          <h3 class="event-title">Большой Выброс</h3>
-          <p>Мощнейший выброс пси-энергии накрывает всю Зону. Ландшафт меняется. Старые карты бесполезны. Многие экспедиции и сталкеры не возвращаются. Пути к Центру Зоны открываются и тут же исчезают.</p>
-          <div class="impact-label">Трансформация</div>
+          <h3 class="event-title">Великий Викид</h3>
+          <p>Найпотужніший викид псі-енергії накриває всю Зону. Ландшафт змінюється. Старі карти марні. Багато експедицій і сталкерів не повертаються. Шляхи до Центру Зони відкриваються і відразу зникають.</p>
+          <div class="impact-label">Трансформація</div>
         </div>
       </div>
 
@@ -364,9 +364,9 @@
         <div class="year-marker">2013</div>
         <div class="event-content">
           <div class="event-year"><i class="fas fa-bolt"></i> 2013</div>
-          <h3 class="event-title">Событие «Пульс»</h3>
-          <p>14 марта. Геологический толчок неизвестной природы. Земля буквально дышит. Обвалы, разломы, появление новых подземных комплексов. Зона окончательно теряет стабильность. Это переломный момент в ее истории.</p>
-          <div class="impact-label">Переломный момент</div>
+          <h3 class="event-title">Подія «Пульс»</h3>
+          <p>14 березня. Геологічний поштовх невідомої природи. Земля буквально дихає. Обвали, розломи, поява нових підземних комплексів. Зона остаточно втрачає стабільність. Це переломний момент у її історії.</p>
+          <div class="impact-label">Переломний момент</div>
         </div>
       </div>
       
@@ -374,9 +374,9 @@
         <div class="year-marker">2014-15</div>
         <div class="event-content">
           <div class="event-year"><i class="fas fa-unlink"></i> 2014–2015</div>
-          <h3 class="event-title">Фрагментация</h3>
-          <p>После "Пульса" Зона — это лоскутное одеяло из изолированных кластеров. Переходы между ними редки и смертельно опасны. Группировки окапываются на своих территориях. Начинается война за ресурсы и пути.</p>
-          <div class="impact-label">Распад</div>
+          <h3 class="event-title">Фрагментація</h3>
+          <p>Після "Пульсу" Зона — це клаптикова ковдра з ізольованих кластерів. Переходи між ними рідкісні та смертельно небезпечні. Угруповання окопуються на своїх територіях. Починається війна за ресурси та шляхи.</p>
+          <div class="impact-label">Розпад</div>
         </div>
       </div>
 
@@ -384,22 +384,22 @@
         <div class="year-marker">2016</div>
         <div class="event-content">
           <div class="event-year"><i class="fas fa-radiation"></i> 2016</div>
-          <h3 class="event-title">Текущая ситуация</h3>
-          <p>Постоянные локальные выбросы. Рельеф нестабилен. Центральные районы — кипящий котел, где никто не может закрепиться надолго. Ходят слухи о новых видах мутантов и артефактов невиданной силы. Каждый день — выживание.</p>
-          <div class="impact-label">Динамический хаос</div>
+          <h3 class="event-title">Поточна ситуація</h3>
+          <p>Постійні локальні викиди. Рельєф нестабільний. Центральні райони — киплячий котел, де ніхто не може закріпитися надовго. Ходять чутки про нові види мутантів та артефакти небаченої сили. Кожен день — виживання.</p>
+          <div class="impact-label">Динамічний хаос</div>
         </div>
       </div>
     </div>
 
     <div class="footer">
-      <p>Конец файла #734</p>
-      <p class="error-code">ERR:0xFA113D - СЕКТОР ПАМЯТИ НЕСТАБИЛЕН</p>
+      <p>Кінець файлу #734</p>
+      <p class="error-code">ERR:0xFA113D - СЕКТОР ПАМ'ЯТІ НЕСТАБІЛЬНИЙ</p>
     </div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // 1. Анимация при скролле (остается без изменений)
+      // 1. Анімація при скролі
       const events = document.querySelectorAll('.event');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -410,7 +410,7 @@
       }, { threshold: 0.1 });
       events.forEach(event => { observer.observe(event); });
 
-      // 2. Эффект пульсации для ключевого события (цвет изменен)
+      // 2. Ефект пульсації для ключової події
       const pulseEvent = document.querySelector('.pulse-event .event-content');
       if (pulseEvent) {
           setInterval(() => {
@@ -421,7 +421,7 @@
           }, 2500);
       }
       
-      // 3. Динамическое время в хедере КПК
+      // 3. Динамічний час у хедері КПК
       const timeElement = document.getElementById('pda-time');
       function updateTime() {
           const now = new Date();
@@ -433,7 +433,7 @@
       setInterval(updateTime, 1000);
       updateTime();
       
-      // 4. Звук при наведении на маркеры
+      // 4. Звук при наведенні на маркери
       const yearMarkers = document.querySelectorAll('.year-marker');
       const clickSound = document.getElementById('pda-click-sound');
       
@@ -441,7 +441,7 @@
           marker.addEventListener('mouseenter', () => {
               if (clickSound) {
                   clickSound.currentTime = 0;
-                  clickSound.play().catch(e => console.error("Не удалось воспроизвести звук:", e));
+                  clickSound.play().catch(e => console.error("Не вдалося відтворити звук:", e));
               }
           });
       });
