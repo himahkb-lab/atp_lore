@@ -17,6 +17,7 @@
             --border-color: #3A3836;
             --accent-primary: #D97C01;
             --accent-green: #39BA8F;
+            --accent-white: #FFFFFF;
             --accent-discord: #5865F2;
             --accent-danger: #ff4d4d;
             --glow-text: 0 0 4px var(--accent-primary);
@@ -258,20 +259,62 @@
             color: var(--text-secondary);
         }
 
-        .world-section p, .start-section p {
+        .world-subsection {
+            margin-top: 20px;
+        }
+
+        .world-subsection h3 {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .world-subsection h3 i {
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            margin-right: 15px;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        .world-subsection p, .start-section p {
              color: var(--text-secondary);
              margin-bottom: 15px;
         }
-        .world-section a, .start-section a {
+        .world-subsection a, .start-section a {
             color: var(--accent-primary);
             text-decoration: none;
         }
-        .world-section a:hover, .start-section a:hover {
+        .world-subsection a:hover, .start-section a:hover {
             text-decoration: underline;
         }
         
         .start-section {
             text-align: center;
+        }
+        
+        .discord-cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent-discord);
+            color: var(--accent-white);
+            font-family: 'Anonymous Pro', monospace;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            border: 1px solid var(--accent-discord);
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
+            transition: all 0.3s ease;
+        }
+        .discord-cta-button:hover {
+            background: #7289da;
+            border-color: #7289da;
+            color: var(--accent-white);
+            box-shadow: 0 0 25px rgba(88, 101, 242, 0.7);
         }
 
         .footer {
@@ -319,7 +362,6 @@
                 </a>
                 
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="active">Головна</a></li>
                     <li><a href="rules.html">Правила проекту</a></li>
                     <li><a href="lore.html">Лорна складова</a></li>
                     <li><a href="donate.html">Допомога проекту</a></li>
@@ -332,8 +374,8 @@
             <div class="cbt-announcement">
                 <h1>Статус: Закрите бета-тестування</h1>
                 <div class="cbt-date">// Старт: 23.08.25 // Кількість місць обмежена</div>
-                <p>Зона чекає на першопрохідців. Ми шукаємо досвідчених сталкерів, готових зануритись у світ, де кожне рішення має наслідки. Приєднуйтесь до ЗБТ, щоб першими вплинути на історію, що народжується.</p>
-                <a href="https://discord.gg/your-discord-link" target="_blank" class="cbt-button">Взяти участь у ЗБТ</a>
+                <p>Зона чекає на першопрохідців. Ми шукаємо досвідчених сталкерів, готових вплинути на історію, що народжується. Приєднуйтесь до ЗБТ та станьте частиною живого світу.</p>
+                <a href="https://discord.gg/JtmCa3GN" target="_blank" class="cbt-button">Взяти участь у ЗБТ</a>
             </div>
 
             <h2>// Наша філософія</h2>
@@ -370,14 +412,20 @@
 
             <div class="world-section">
                 <h2>// Унікальний світ Зони</h2>
-                <p>Ми пропонуємо вам дослідити власноруч створену мапу, яка об'єднує ключові локації з оригінальної трилогії S.T.A.L.K.E.R. та ідейно надихається світом S.T.A.L.K.E.R. 2. Це створює унікальний простір, знайомий, але водночас повний незвіданих таємниць.</p>
-                <p>Наш проєкт стартує з подій, описаних у <a href="lore.html">Лорній складовій</a>, але це лише відправна точка. Головний сюжет будете творити ви. Кожен місяць глобальний лор оновлюватиметься, відображаючи наслідки ваших дій, війн угруповань та значних RP-подій. Ви побачите, як Зона живе і дихає у відповідь на ваші вчинки.</p>
+                <div class="world-subsection">
+                    <h3><i class="fas fa-map-marked-alt"></i>Власноруч створена мапа</h3>
+                    <p>Ми пропонуємо вам дослідити унікальну мапу, яка об'єднує ключові локації з оригінальної трилогії S.T.A.L.K.E.R. та ідейно надихається світом S.T.A.L.K.E.R. 2. Це створює простір, знайомий, але водночас повний незвіданих таємниць.</p>
+                </div>
+                <div class="world-subsection">
+                    <h3><i class="fas fa-book-open"></i>Живий Лор</h3>
+                    <p>Наш проєкт стартує з подій, описаних у <a href="lore.html">Лорній складовій</a>, але це лише відправна точка. Головний сюжет будете творити ви. Кожен місяць глобальний лор оновлюватиметься, відображаючи наслідки ваших дій, війн угруповань та значних RP-подій.</p>
+                </div>
             </div>
             
             <div class="start-section">
                 <h2>// Як почати?</h2>
                 <p>Все, що потрібно для старту, ви знайдете на цьому сайті та в нашому Discord-каналі. Саме там відбувається основна комунікація, публікуються оновлення та починається ваш шлях до Зони. Готові ризикнути?</p>
-                <a href="https://discord.gg/your-discord-link" target="_blank" class="cbt-button">Приєднатись до Discord</a>
+                <a href="https://discord.gg/JtmCa3GN" target="_blank" class="discord-cta-button">Приєднатись до Discord</a>
             </div>
 
             <div class="footer">
