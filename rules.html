@@ -10,19 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* Палітра кольорів з вашого еталонного візуала */
             --bg-main: #0E0D0D;
             --bg-content: #191715;
             --text-primary: #C6BBAB;
             --text-secondary: #707070;
             --border-color: #3A3836;
             --accent-primary: #D97C01;
-            
-            /* Додаткові акцентні кольори */
             --accent-danger: #ff4d4d;
             --accent-discord: #5865F2;
-            
-            /* Тіні та світіння */
             --glow-text: 0 0 4px var(--accent-primary);
         }
 
@@ -30,9 +25,27 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-primary) var(--border-color);
+        }
+        
+        *::-webkit-scrollbar {
+            height: 4px;
+            width: 4px;
         }
 
-        /* Загальні стилі тіла сторінки */
+        *::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background-color: var(--accent-primary);
+            border-radius: 2px;
+        }
+        *::-webkit-scrollbar-thumb:hover {
+            background-color: var(--text-primary);
+        }
+
         body {
             font-family: 'Anonymous Pro', monospace;
             background-color: var(--bg-main);
@@ -43,12 +56,10 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* Ефект старого ЕПТ-монітора */
         body::after {
             content: " ";
             display: block;
@@ -70,13 +81,11 @@
             100% { opacity: 0.98; }
         }
 
-        /* Контейнер КПК */
         .pda-container {
             width: 100%;
             max-width: 1000px;
         }
 
-        /* Верхній статус-бар */
         .top-status-bar {
             display: flex;
             justify-content: space-between;
@@ -89,7 +98,6 @@
             flex-wrap: wrap;
         }
 
-        /* Навігаційний хедер */
         .site-header {
             width: 100%;
             background: var(--bg-main);
@@ -106,9 +114,7 @@
             padding: 10px 15px;
         }
         
-        .logo-link {
-            text-decoration: none;
-        }
+        .logo-link { text-decoration: none; }
 
         .project-logo {
             display: flex;
@@ -121,9 +127,7 @@
             letter-spacing: 1px;
             transition: color 0.3s;
         }
-        .logo-link:hover .project-logo {
-            color: var(--accent-primary);
-        }
+        .logo-link:hover .project-logo { color: var(--accent-primary); }
         
         .project-logo i {
             margin-right: 10px;
@@ -136,9 +140,7 @@
             list-style: none;
         }
         
-        .nav-menu li {
-            margin-left: 15px;
-        }
+        .nav-menu li { margin-left: 15px; }
         
         .nav-menu li a {
             display: block;
@@ -148,7 +150,6 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             font-weight: 700;
-            letter-spacing: 1px;
             transition: all 0.3s ease;
         }
         
@@ -166,17 +167,14 @@
             font-size: 1.5rem;
             padding: 5px 10px;
         }
-        .nav-menu li a.discord-icon:hover {
-            color: var(--accent-discord);
-        }
+        .nav-menu li a.discord-icon:hover { color: var(--accent-discord); }
         
-        /* Основний екран КПК */
         .pda-screen {
             width: 100%;
             margin-top: 25px;
             background: var(--bg-content);
             border: 1px solid var(--border-color);
-            padding: 15px;
+            padding: 25px;
             box-shadow: 0 0 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(0,0,0,0.7);
         }
 
@@ -189,39 +187,37 @@
 
         .pda-screen h1 {
             font-size: 2.2rem;
-            font-weight: 700;
             text-transform: uppercase;
             color: var(--text-primary);
             text-shadow: var(--glow-text);
         }
 
-        /* Навігація по правилах */
-        .rules-navigation {
-            position: sticky;
-            top: 0;
-            z-index: 10;
+        /* ---- НОВИЙ МАКЕТ ДЛЯ ПРАВИЛ ---- */
+        .rules-layout-wrapper {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .rules-navigation {
+            flex: 0 0 200px; /* Ширина бічної панелі */
+            position: sticky;
+            top: 20px;
             list-style: none;
-            padding: 15px 10px;
-            margin: 0 -15px 20px;
-            background: var(--bg-main);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            padding-right: 20px;
         }
 
         .rules-navigation a {
-            background: rgba(0,0,0,0.2);
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
+            display: block;
             padding: 8px 12px;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.8rem;
-            text-transform: uppercase;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            transition: all 0.2s ease-in-out;
         }
         
         .rules-navigation a:hover {
@@ -233,18 +229,22 @@
             background: var(--accent-primary);
             color: #000;
             border-color: var(--accent-primary);
-            box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+            font-weight: bold;
         }
 
-        /* Контент правил */
-        .content {
-            padding: 10px;
+        .rules-content-wrapper {
+            flex: 1; /* Основний контент займає решту місця */
         }
+        /* ---- КІНЕЦЬ НОВОГО МАКЕТУ ---- */
+
 
         .content h2, .content h3 {
             color: var(--text-primary);
-            margin-top: 25px;
+            margin-top: 30px;
             margin-bottom: 15px;
+        }
+        .content h2:first-child {
+             margin-top: 0;
         }
 
         .content h2 {
@@ -255,10 +255,7 @@
             text-shadow: var(--glow-text);
         }
 
-        .content h3 {
-            font-size: 1.2rem;
-            color: var(--text-primary);
-        }
+        .content h3 { font-size: 1.2rem; }
 
         .content p, .content li {
             color: var(--text-secondary);
@@ -290,13 +287,12 @@
             font-style: italic;
             color: var(--text-primary);
         }
-
+        
         .content .punishment b {
             color: var(--accent-danger);
             font-weight: bold;
         }
 
-        /* Футер */
         .footer {
             text-align: center;
             padding: 20px 0 10px;
@@ -310,7 +306,6 @@
             text-transform: uppercase;
         }
 
-        /* Кнопка "Нагору" */
         #scrollToTopBtn {
             position: fixed;
             bottom: 30px;
@@ -333,17 +328,39 @@
             border: 1px solid var(--accent-primary);
         }
 
-        #scrollToTopBtn.show {
-            opacity: 0.8;
-            visibility: visible;
-        }
-
-        #scrollToTopBtn:hover {
-            opacity: 1;
-            background-color: var(--text-primary);
-        }
+        #scrollToTopBtn.show { opacity: 0.8; visibility: visible; }
+        #scrollToTopBtn:hover { opacity: 1; background-color: var(--text-primary); }
 
         /* Адаптація */
+        @media (max-width: 850px) {
+            .rules-layout-wrapper {
+                flex-direction: column; /* Перемикаємо на вертикальний макет */
+            }
+            .rules-navigation {
+                position: sticky;
+                top: 0;
+                z-index: 10;
+                display: flex;
+                list-style: none;
+                padding: 15px 0;
+                width: 100%;
+                background: var(--bg-content);
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .rules-navigation a {
+                display: inline-block;
+                flex-shrink: 0;
+                margin: 0 4px;
+            }
+            .rules-content-wrapper {
+                width: 100%;
+            }
+        }
+
         @media (max-width: 768px) {
             body { padding: 10px; }
             .navigation-container { flex-direction: column; padding: 15px; }
@@ -352,26 +369,8 @@
             .nav-menu li { margin: 5px; }
             h1 { font-size: 1.8rem; }
             
-            #scrollToTopBtn {
-                bottom: 15px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
-            }
+            #scrollToTopBtn { bottom: 15px; right: 15px; width: 40px; height: 40px; }
         }
-        
-        @media (max-width: 480px) {
-            .rules-navigation {
-                gap: 5px;
-            }
-            .rules-navigation a {
-                flex-basis: calc(50% - 10px);
-                text-align: center;
-            }
-            .content h2 { font-size: 1.3rem; }
-            .content h3 { font-size: 1.1rem; }
-        }
-
     </style>
 </head>
 <body>
@@ -407,31 +406,95 @@
                 <h1>Правила проекту</h1>
             </header>
 
-            <nav class="rules-navigation">
-                <a href="#rules-1">Загальні</a>
-                <a href="#rules-2">RolePlay</a>
-                <a href="#rules-3">Meta-Gaming</a>
-                <a href="#rules-4">RDM</a>
-                <a href="#rules-5">Non-RP</a>
-                <a href="#rules-6">Бази</a>
-                <a href="#rules-7">Угруповання</a>
-                <a href="#rules-8">Особливості</a>
-                <a href="#rules-9">Гоп-стоп</a>
-                <a href="#rules-10">Замовлення</a>
-                <a href="#rules-11">РП-смерть</a>
-                <a href="#rules-12">Штурм</a>
-                <a href="#rules-13">Інше</a>
-            </nav>
+            <div class="rules-layout-wrapper">
+                <nav class="rules-navigation">
+                    <a href="#rules-1">Загальні</a>
+                    <a href="#rules-2">RolePlay</a>
+                    <a href="#rules-3">Meta-Gaming</a>
+                    <a href="#rules-4">RDM</a>
+                    <a href="#rules-5">Non-RP</a>
+                    <a href="#rules-6">Бази</a>
+                    <a href="#rules-7">Угруповання</a>
+                    <a href="#rules-8">Особливості</a>
+                    <a href="#rules-9">Гоп-стоп</a>
+                    <a href="#rules-10">Замовлення</a>
+                    <a href="#rules-11">РП-смерть</a>
+                    <a href="#rules-12">Штурм</a>
+                    <a href="#rules-13">Інше</a>
+                </nav>
+    
+                <div class="rules-content-wrapper">
+                    <div class="content" id="rules-content">
+                        <h2 id="rules-1">Загальні положення</h2>
+                        <h3>1.1 Основні принципи</h3>
+                        <ul>
+                            <li><b>Незнання правил не звільняє від відповідальності. Заходячи на сервер, ви автоматично погоджуєтесь з усіма правилами.</b></li>
+                            <li><b>Адміністрація залишає за собою право змінювати правила в будь-який момент. Слідкуйте за оновленнями.</b></li>
+                            <li><b>Заборонено використання багів, чітів та стороннього ПЗ, що дає перевагу над іншими гравцями.</b><p class="punishment"><b>Покарання:</b> Перманентний бан.</p></li>
+                        </ul>
+        
+                        <h2 id="rules-2">Правила RolePlay (RP)</h2>
+                        <h3>2.1 Відіграш ролі</h3>
+                        <ul>
+                            <li><b>Кожен гравець зобов'язаний відігравати свого персонажа відповідно до його історії, характеру та приналежності до угруповання.</b></li>
+                            <li><b>Заборонено виходити з образу (OOC - Out Of Character) в ігрових чатах. Для OOC-спілкування використовуйте спеціальні команди (напр. /b, //).</b></li>
+                            <li><b>Ваш персонаж повинен боятися смерті та цінувати своє життя (Fear RP).</b><p class="exception"><b>Виняток:</b> персонажі з відповідними рисами, як-от фанатики або зневірені.</p></li>
+                        </ul>
+        
+                        <h2 id="rules-3">Meta-Gaming (MG)</h2>
+                        <h3>3.1 Використання OOC інформації в IC</h3>
+                        <ul>
+                            <li><b>Заборонено використовувати інформацію, отриману позаігровим шляхом (OOC), для отримання ігрової переваги (IC).</b><p class="comment"><b>Приклад:</b> знати ім'я гравця над головою, дізнаватися місцезнаходження через Discord, знати про плани угруповання з трансляції на Twitch.</p><p class="punishment"><b>Покарання:</b> Від попередження до тимчасового бану.</p></li>
+                        </ul>
+        
+                        <h2 id="rules-4">Random DeathMatch (RDM)</h2>
+                        <h3>4.1 Вбивство без причини</h3>
+                        <ul>
+                            <li><b>Заборонено вбивати інших гравців без вагомої та зрозумілої RP-причини. Конфлікт повинен бути логічно обґрунтований.</b><p class="punishment"><b>Покарання:</b> Тимчасовий бан.</p></li>
+                            <li><b>Масова різанина (Mass RDM) - вбивство 3-х і більше гравців без RP-причини за короткий проміжок часу.</b><p class="punishment"><b>Покарання:</b> Довготривалий або перманентний бан.</p></li>
+                        </ul>
+        
+                        <h2 id="rules-5">Non-RP поведінка</h2>
+                        <h3>5.1 Порушення логіки світу</h3>
+                        <ul>
+                            <li><b>Заборонені будь-які дії, що руйнують атмосферу та не відповідають логіці світу S.T.A.L.K.E.R.</b><p class="comment"><b>Приклад:</b> стрибки на місці без причини (bunny hopping), біг по колу під час діалогу, навмисне блокування проходів.</p></li>
+                            <li><b>Заборонено діставати зброю в "зелених зонах" (бази, бари) без вагомої RP-причини (наприклад, пряма загроза життю).</b></li>
+                        </ul>
+                        
+                        <h2 id="rules-6">Бази та сховища</h2>
+                        <h3>6.1 Правила поведінки на базах</h3>
+                        <ul>
+                            <li><b>На базі свого угруповання гравець знаходиться у відносній безпеці. Заборонено відкривати вогонь по союзникам.</b></li>
+                            <li><b>Проникнення на ворожу базу дозволено лише під час офіційного штурму або за наявності серйозної RP-причини, узгодженої з адміністрацією.</b></li>
+                        </ul>
+        
+                        <h2 id="rules-7">Угруповання</h2>
+                        <h3>7.1 Взаємодія</h3>
+                        <ul>
+                            <li><b>Вступ та вихід з угруповання відбувається виключно за RP.</b></li>
+                            <li><b>Лідер угруповання несе відповідальність за дотримання правил його членами.</b></li>
+                        </ul>
 
-            <div class="content" id="rules-content">
-                <p>Завантаження даних... Будь ласка, зачекайте.</p>
-            </div>
+                        <h2 id="rules-11">РП-смерть (PK)</h2>
+                        <h3>11.1 Остаточна смерть персонажа</h3>
+                        <ul>
+                            <li><b>РП-смерть (Player Kill) може настати внаслідок унікальної ігрової ситуації та вимагає схвалення адміністрації.</b></li>
+                            <li><b>Після РП-смерті гравець зобов'язаний створити нового персонажа з новою історією.</b></li>
+                        </ul>
 
-            <div class="footer">
-                <p>© 2024 <span>AFTER THE PULSE</span>. УСІ ПРАВА ЗАХИЩЕНО.</p>
+                        <h2 id="rules-12">Штурм</h2>
+                        <h3>12.1 Правила штурму баз</h3>
+                        <ul>
+                            <li><b>Штурм бази угруповання повинен бути заздалегідь узгоджений з адміністрацією і мати вагомі RP-підстави.</b></li>
+                            <li><b>Під час штурму сторони повинні дотримуватися заздалегідь визначених правил бою.</b></li>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <p>© 2024 <span>AFTER THE PULSE</span>. УСІ ПРАВА ЗАХИЩЕНО.</p>
+                    </div>
+                </div>
             </div>
         </main>
-        
     </div>
 
     <a href="#" id="scrollToTopBtn" title="Нагору">
@@ -442,56 +505,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             const timeElement = document.getElementById('pda-time');
             const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-            const rulesContent = document.getElementById('rules-content');
             const navLinks = document.querySelectorAll('.rules-navigation a');
+            const sections = document.querySelectorAll('.content h2');
             const scrollThreshold = 300;
 
-            // Завантаження та відображення правил з JSON
-            fetch('rules.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    let html = '';
-                    data.forEach(section => {
-                        html += `<h2 id="${section.id}">${section.title}</h2>`;
-                        section.subsections.forEach(subsection => {
-                            html += `<h3>${subsection.title}</h3>`;
-                            if (subsection.points && subsection.points.length > 0) {
-                                html += `<ul>`;
-                                subsection.points.forEach(point => {
-                                    html += `<li><b>${point.text}</b>`;
-                                    if (point.exception) {
-                                        html += `<p class="exception"><b>Виняток:</b> ${point.exception}</p>`;
-                                    }
-                                    if (point.punishment) {
-                                        html += `<p class="punishment"><b>Покарання:</b> ${point.punishment}</p>`;
-                                    }
-                                    html += `</li>`;
-                                });
-                                html += `</ul>`;
-                            }
-                            if (subsection.comment) {
-                                html += `<p class="comment"><b>Коментар:</b> ${subsection.comment}</p>`;
-                            }
-                        });
-                    });
-                    rulesContent.innerHTML = html;
-                    
-                    // Переініціалізація обробника прокрутки після завантаження контенту
-                    const sections = document.querySelectorAll('.content h2');
-                    window.addEventListener('scroll', () => handleScroll(sections));
-                    handleScroll(sections); // Викликати одразу для ініціалізації
-                })
-                .catch(error => {
-                    console.error('Помилка завантаження правил:', error);
-                    rulesContent.innerHTML = '<p class="punishment"><b>ПОМИЛКА:</b> Не вдалося завантажити правила. Перевірте з\'єднання або зверніться до адміністрації.</p>';
-                });
-
-            // Функція оновлення часу
             function updateTime() {
                 const now = new Date();
                 const timeString = now.toTimeString().split(' ')[0];
@@ -500,8 +517,7 @@
                 }
             }
 
-            // Функція для обробки прокрутки
-            function handleScroll(sections) {
+            function handleScroll() {
                 // Кнопка "нагору"
                 if (window.scrollY > scrollThreshold) {
                     scrollToTopBtn.classList.add("show");
@@ -513,7 +529,9 @@
                 let currentSectionId = '';
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    if (window.scrollY >= sectionTop - 100) { // -100px для кращого спрацювання зі sticky-хедером
+                    const contentWrapper = document.querySelector('.rules-content-wrapper');
+                    // Враховуємо зсув контейнера
+                    if (window.scrollY >= (sectionTop + contentWrapper.offsetTop - 100) ) {
                         currentSectionId = section.getAttribute('id');
                     }
                 });
@@ -526,23 +544,27 @@
                 });
             }
             
-            // Плавна прокрутка до якоря
             navLinks.forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (targetElement) {
+                        // Плавна прокрутка до елемента
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Відступ для кращої видимості заголовка
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
 
-            // Прокрутка нагору
             scrollToTopBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-
-            // Запуск таймера
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
             setInterval(updateTime, 1000);
             updateTime();
         });
