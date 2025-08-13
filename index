@@ -173,14 +173,18 @@
 
         /* --- СТИЛІ ГОЛОВНОЇ СТОРІНКИ --- */
 
-        .cbt-announcement {
+        .pda-banner {
             border: 1px dashed var(--border-color);
             padding: 25px;
             text-align: center;
             background: rgba(0,0,0,0.2);
+            margin-top: 40px;
+        }
+        .pda-banner:first-child {
+            margin-top: 0;
         }
 
-        .cbt-announcement h1 {
+        .pda-banner h1 {
             font-size: 1.8rem;
             text-transform: uppercase;
             color: var(--accent-primary);
@@ -188,19 +192,27 @@
             margin-bottom: 5px;
         }
 
-        .cbt-announcement .cbt-date {
+        .pda-banner .cbt-date {
             font-size: 1.1rem;
             color: var(--text-primary);
             margin-bottom: 25px;
         }
 
-        .cbt-announcement p {
+        .pda-banner p {
             color: var(--text-secondary);
             margin-bottom: 25px;
-            max-width: 600px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
+        
+        /* Скидаємо стилі для H2 всередині банера */
+        .pda-banner h2 {
+            border-bottom: none;
+            margin: 0 0 20px 0;
+            padding-bottom: 0;
+        }
+
 
         .cbt-button {
             display: inline-block;
@@ -280,20 +292,16 @@
             text-align: center;
         }
         
-        .world-subsection p, .start-section p {
+        .world-subsection p {
              color: var(--text-secondary);
              margin-bottom: 15px;
         }
-        .world-subsection a, .start-section a {
+        .world-subsection a {
             color: var(--accent-primary);
             text-decoration: none;
         }
-        .world-subsection a:hover, .start-section a:hover {
+        .world-subsection a:hover {
             text-decoration: underline;
-        }
-        
-        .start-section {
-            text-align: center;
         }
         
         .discord-cta-button {
@@ -336,7 +344,7 @@
             .project-logo { margin-bottom: 15px; }
             .nav-menu { width: 100%; justify-content: center; flex-wrap: wrap; }
             .nav-menu li { margin: 5px; }
-            h1, .cbt-announcement h1 { font-size: 1.8rem; }
+            h1, .pda-banner h1 { font-size: 1.8rem; }
             .philosophy-cards { grid-template-columns: 1fr; }
         }
 
@@ -371,7 +379,7 @@
         </header>
 
         <main class="pda-screen">
-            <div class="cbt-announcement">
+            <div class="pda-banner">
                 <h1>Статус: Закрите бета-тестування</h1>
                 <div class="cbt-date">// Старт: 23.08.25 // Кількість місць обмежена</div>
                 <p>Зона чекає на першопрохідців. Ми шукаємо досвідчених сталкерів, готових вплинути на історію, що народжується. Приєднуйтесь до ЗБТ та станьте частиною живого світу.</p>
@@ -422,7 +430,7 @@
                 </div>
             </div>
             
-            <div class="start-section">
+            <div class="pda-banner">
                 <h2>// Як почати?</h2>
                 <p>Все, що потрібно для старту, ви знайдете на цьому сайті та в нашому Discord-каналі. Саме там відбувається основна комунікація, публікуються оновлення та починається ваш шлях до Зони. Готові ризикнути?</p>
                 <a href="https://discord.gg/JtmCa3GN" target="_blank" class="discord-cta-button">Приєднатись до Discord</a>
