@@ -192,7 +192,6 @@
             text-shadow: var(--glow-text);
         }
 
-        /* ---- НОВИЙ МАКЕТ ДЛЯ ПРАВИЛ ---- */
         .rules-layout-wrapper {
             display: flex;
             gap: 25px;
@@ -200,12 +199,14 @@
         }
 
         .rules-navigation {
-            flex: 0 0 200px; /* Ширина бічної панелі */
+            flex: 0 0 220px;
             position: sticky;
             top: 20px;
             list-style: none;
             border-right: 1px solid var(--border-color);
             padding-right: 20px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
         }
 
         .rules-navigation a {
@@ -233,10 +234,9 @@
         }
 
         .rules-content-wrapper {
-            flex: 1; /* Основний контент займає решту місця */
+            flex: 1;
+            min-width: 0;
         }
-        /* ---- КІНЕЦЬ НОВОГО МАКЕТУ ---- */
-
 
         .content h2, .content h3 {
             color: var(--text-primary);
@@ -255,7 +255,7 @@
             text-shadow: var(--glow-text);
         }
 
-        .content h3 { font-size: 1.2rem; }
+        .content h3 { font-size: 1.1rem; line-height: 1.4; }
 
         .content p, .content li {
             color: var(--text-secondary);
@@ -279,16 +279,17 @@
             color: var(--accent-primary);
         }
 
-        .content .punishment, .content .exception, .content .comment {
+        .content .punishment, .content .exception, .content .comment, .content .example, .content .violation {
             padding: 10px 15px;
-            margin: 15px 0;
+            margin: 15px 0 15px 15px;
             border-left: 3px solid var(--border-color);
             background: rgba(0,0,0,0.2);
             font-style: italic;
             color: var(--text-primary);
+            font-size: 0.9rem;
         }
         
-        .content .punishment b {
+        .content .punishment b, .content .punishment_violation b {
             color: var(--accent-danger);
             font-weight: bold;
         }
@@ -331,23 +332,23 @@
         #scrollToTopBtn.show { opacity: 0.8; visibility: visible; }
         #scrollToTopBtn:hover { opacity: 1; background-color: var(--text-primary); }
 
-        /* Адаптація */
         @media (max-width: 850px) {
             .rules-layout-wrapper {
-                flex-direction: column; /* Перемикаємо на вертикальний макет */
+                flex-direction: column;
             }
             .rules-navigation {
                 position: sticky;
                 top: 0;
                 z-index: 10;
                 display: flex;
+                flex-direction: row;
                 list-style: none;
                 padding: 15px 0;
                 width: 100%;
                 background: var(--bg-content);
                 border-right: none;
                 border-bottom: 1px solid var(--border-color);
-                
+                max-height: none;
                 overflow-x: auto;
                 white-space: nowrap;
             }
@@ -355,9 +356,6 @@
                 display: inline-block;
                 flex-shrink: 0;
                 margin: 0 4px;
-            }
-            .rules-content-wrapper {
-                width: 100%;
             }
         }
 
@@ -407,87 +405,13 @@
             </header>
 
             <div class="rules-layout-wrapper">
-                <nav class="rules-navigation">
-                    <a href="#rules-1">Загальні</a>
-                    <a href="#rules-2">RolePlay</a>
-                    <a href="#rules-3">Meta-Gaming</a>
-                    <a href="#rules-4">RDM</a>
-                    <a href="#rules-5">Non-RP</a>
-                    <a href="#rules-6">Бази</a>
-                    <a href="#rules-7">Угруповання</a>
-                    <a href="#rules-8">Особливості</a>
-                    <a href="#rules-9">Гоп-стоп</a>
-                    <a href="#rules-10">Замовлення</a>
-                    <a href="#rules-11">РП-смерть</a>
-                    <a href="#rules-12">Штурм</a>
-                    <a href="#rules-13">Інше</a>
+                <nav class="rules-navigation" id="rules-nav-container">
+                    <p>Завантаження навігації...</p>
                 </nav>
     
                 <div class="rules-content-wrapper">
                     <div class="content" id="rules-content">
-                        <h2 id="rules-1">Загальні положення</h2>
-                        <h3>1.1 Основні принципи</h3>
-                        <ul>
-                            <li><b>Незнання правил не звільняє від відповідальності. Заходячи на сервер, ви автоматично погоджуєтесь з усіма правилами.</b></li>
-                            <li><b>Адміністрація залишає за собою право змінювати правила в будь-який момент. Слідкуйте за оновленнями.</b></li>
-                            <li><b>Заборонено використання багів, чітів та стороннього ПЗ, що дає перевагу над іншими гравцями.</b><p class="punishment"><b>Покарання:</b> Перманентний бан.</p></li>
-                        </ul>
-        
-                        <h2 id="rules-2">Правила RolePlay (RP)</h2>
-                        <h3>2.1 Відіграш ролі</h3>
-                        <ul>
-                            <li><b>Кожен гравець зобов'язаний відігравати свого персонажа відповідно до його історії, характеру та приналежності до угруповання.</b></li>
-                            <li><b>Заборонено виходити з образу (OOC - Out Of Character) в ігрових чатах. Для OOC-спілкування використовуйте спеціальні команди (напр. /b, //).</b></li>
-                            <li><b>Ваш персонаж повинен боятися смерті та цінувати своє життя (Fear RP).</b><p class="exception"><b>Виняток:</b> персонажі з відповідними рисами, як-от фанатики або зневірені.</p></li>
-                        </ul>
-        
-                        <h2 id="rules-3">Meta-Gaming (MG)</h2>
-                        <h3>3.1 Використання OOC інформації в IC</h3>
-                        <ul>
-                            <li><b>Заборонено використовувати інформацію, отриману позаігровим шляхом (OOC), для отримання ігрової переваги (IC).</b><p class="comment"><b>Приклад:</b> знати ім'я гравця над головою, дізнаватися місцезнаходження через Discord, знати про плани угруповання з трансляції на Twitch.</p><p class="punishment"><b>Покарання:</b> Від попередження до тимчасового бану.</p></li>
-                        </ul>
-        
-                        <h2 id="rules-4">Random DeathMatch (RDM)</h2>
-                        <h3>4.1 Вбивство без причини</h3>
-                        <ul>
-                            <li><b>Заборонено вбивати інших гравців без вагомої та зрозумілої RP-причини. Конфлікт повинен бути логічно обґрунтований.</b><p class="punishment"><b>Покарання:</b> Тимчасовий бан.</p></li>
-                            <li><b>Масова різанина (Mass RDM) - вбивство 3-х і більше гравців без RP-причини за короткий проміжок часу.</b><p class="punishment"><b>Покарання:</b> Довготривалий або перманентний бан.</p></li>
-                        </ul>
-        
-                        <h2 id="rules-5">Non-RP поведінка</h2>
-                        <h3>5.1 Порушення логіки світу</h3>
-                        <ul>
-                            <li><b>Заборонені будь-які дії, що руйнують атмосферу та не відповідають логіці світу S.T.A.L.K.E.R.</b><p class="comment"><b>Приклад:</b> стрибки на місці без причини (bunny hopping), біг по колу під час діалогу, навмисне блокування проходів.</p></li>
-                            <li><b>Заборонено діставати зброю в "зелених зонах" (бази, бари) без вагомої RP-причини (наприклад, пряма загроза життю).</b></li>
-                        </ul>
-                        
-                        <h2 id="rules-6">Бази та сховища</h2>
-                        <h3>6.1 Правила поведінки на базах</h3>
-                        <ul>
-                            <li><b>На базі свого угруповання гравець знаходиться у відносній безпеці. Заборонено відкривати вогонь по союзникам.</b></li>
-                            <li><b>Проникнення на ворожу базу дозволено лише під час офіційного штурму або за наявності серйозної RP-причини, узгодженої з адміністрацією.</b></li>
-                        </ul>
-        
-                        <h2 id="rules-7">Угруповання</h2>
-                        <h3>7.1 Взаємодія</h3>
-                        <ul>
-                            <li><b>Вступ та вихід з угруповання відбувається виключно за RP.</b></li>
-                            <li><b>Лідер угруповання несе відповідальність за дотримання правил його членами.</b></li>
-                        </ul>
-
-                        <h2 id="rules-11">РП-смерть (PK)</h2>
-                        <h3>11.1 Остаточна смерть персонажа</h3>
-                        <ul>
-                            <li><b>РП-смерть (Player Kill) може настати внаслідок унікальної ігрової ситуації та вимагає схвалення адміністрації.</b></li>
-                            <li><b>Після РП-смерті гравець зобов'язаний створити нового персонажа з новою історією.</b></li>
-                        </ul>
-
-                        <h2 id="rules-12">Штурм</h2>
-                        <h3>12.1 Правила штурму баз</h3>
-                        <ul>
-                            <li><b>Штурм бази угруповання повинен бути заздалегідь узгоджений з адміністрацією і мати вагомі RP-підстави.</b></li>
-                            <li><b>Під час штурму сторони повинні дотримуватися заздалегідь визначених правил бою.</b></li>
-                        </ul>
+                        <p>Завантаження правил...</p>
                     </div>
                     <div class="footer">
                         <p>© 2024 <span>AFTER THE PULSE</span>. УСІ ПРАВА ЗАХИЩЕНО.</p>
@@ -503,68 +427,140 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const navContainer = document.getElementById('rules-nav-container');
+            const contentContainer = document.getElementById('rules-content');
             const timeElement = document.getElementById('pda-time');
             const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-            const navLinks = document.querySelectorAll('.rules-navigation a');
-            const sections = document.querySelectorAll('.content h2');
             const scrollThreshold = 300;
 
-            function updateTime() {
-                const now = new Date();
-                const timeString = now.toTimeString().split(' ')[0];
-                if (timeElement) {
-                    timeElement.textContent = timeString;
-                }
-            }
+            // Функція для генерації HTML з JSON даних
+            function renderRules(data) {
+                let navHTML = '';
+                let contentHTML = '';
 
-            function handleScroll() {
-                // Кнопка "нагору"
-                if (window.scrollY > scrollThreshold) {
-                    scrollToTopBtn.classList.add("show");
-                } else {
-                    scrollToTopBtn.classList.remove("show");
-                }
+                data.forEach(section => {
+                    // Генерація навігації
+                    navHTML += `<a href="#${section.id}">${section.title}</a>`;
 
-                // Підсвітка активного пункту навігації
-                let currentSectionId = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const contentWrapper = document.querySelector('.rules-content-wrapper');
-                    // Враховуємо зсув контейнера
-                    if (window.scrollY >= (sectionTop + contentWrapper.offsetTop - 100) ) {
-                        currentSectionId = section.getAttribute('id');
-                    }
-                });
+                    // Генерація контенту
+                    contentHTML += `<h2 id="${section.id}">${section.title}</h2>`;
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active-nav-link');
-                    if (link.getAttribute('href') === `#${currentSectionId}`) {
-                        link.classList.add('active-nav-link');
-                    }
-                });
-            }
-            
-            navLinks.forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(this.getAttribute('href'));
-                    if (targetElement) {
-                        // Плавна прокрутка до елемента
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80, // Відступ для кращої видимості заголовка
-                            behavior: 'smooth'
+                    if (section.subsections && section.subsections.length > 0) {
+                        section.subsections.forEach(subsection => {
+                            contentHTML += `<h3>${subsection.title}</h3>`;
+
+                            if (subsection.points && subsection.points.length > 0) {
+                                contentHTML += '<ul>';
+                                subsection.points.forEach(point => {
+                                    contentHTML += `<li><b>${point.text || ''}</b>`;
+                                    // Додаємо додаткові поля, якщо вони існують
+                                    if (point.comment) contentHTML += `<p class="comment"><b>Коментар:</b> ${point.comment}</p>`;
+                                    if (point.exception) contentHTML += `<p class="exception"><b>Виняток:</b> ${point.exception}</p>`;
+                                    if (point.example) contentHTML += `<p class="example"><b>Приклад:</b> ${point.example}</p>`;
+                                    if (point.violation) contentHTML += `<p class="violation"><b>Порушення:</b> ${point.violation}</p>`;
+                                    if (point.punishment) contentHTML += `<p class="punishment"><b>Покарання:</b> ${point.punishment}</p>`;
+                                    if (point.punishment_violation) contentHTML += `<p class="punishment"><b>Покарання за порушення:</b> ${point.punishment_violation}</p>`;
+                                    contentHTML += '</li>';
+                                });
+                                contentHTML += '</ul>';
+                            }
+                             // Покарання та коментарі на рівні підсекції
+                            if (subsection.comment) contentHTML += `<p class="comment"><b>Коментар:</b> ${subsection.comment}</p>`;
+                            if (subsection.punishment) contentHTML += `<p class="punishment"><b>Покарання:</b> ${subsection.punishment}</p>`;
                         });
                     }
                 });
-            });
 
+                navContainer.innerHTML = navHTML;
+                contentContainer.innerHTML = contentHTML;
+            }
+            
+            // --- ОСНОВНА ЛОГІКА ---
+
+            // 1. Завантажуємо дані з rules.json
+            fetch('rules.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(rulesData => {
+                    // 2. Рендеримо правила та навігацію
+                    renderRules(rulesData);
+
+                    // 3. Ініціалізуємо слухачів подій ПІСЛЯ того, як контент створено
+                    initializeEventListeners();
+                })
+                .catch(error => {
+                    console.error("Помилка завантаження або обробки правил:", error);
+                    contentContainer.innerHTML = `<p class="punishment"><b>ПОМИЛКА:</b> Не вдалося завантажити файл з правилами. Переконайтесь, що файл 'rules.json' знаходиться в тій самій теці, що й цей HTML-файл, і не містить синтаксичних помилок.</p>`;
+                    navContainer.innerHTML = '';
+                });
+
+
+            // Функція для ініціалізації всіх слухачів
+            function initializeEventListeners() {
+                const navLinks = document.querySelectorAll('.rules-navigation a');
+                const sections = document.querySelectorAll('.content h2');
+
+                // Функція для обробки прокрутки
+                function handleScroll() {
+                    // Кнопка "нагору"
+                    if (window.scrollY > scrollThreshold) {
+                        scrollToTopBtn.classList.add("show");
+                    } else {
+                        scrollToTopBtn.classList.remove("show");
+                    }
+
+                    // Підсвітка активного пункту навігації
+                    let currentSectionId = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const contentWrapper = document.querySelector('.rules-content-wrapper');
+                        if (window.scrollY >= (sectionTop + contentWrapper.offsetTop - 100)) {
+                            currentSectionId = section.getAttribute('id');
+                        }
+                    });
+
+                    navLinks.forEach(link => {
+                        link.classList.remove('active-nav-link');
+                        if (link.getAttribute('href') === `#${currentSectionId}`) {
+                            link.classList.add('active-nav-link');
+                        }
+                    });
+                }
+                
+                // Плавна прокрутка до якоря
+                navLinks.forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(this.getAttribute('href'));
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+                
+                window.addEventListener('scroll', handleScroll);
+                handleScroll(); // Викликаємо одразу для ініціалізації
+            }
+
+            // Прокрутка нагору
             scrollToTopBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
             
-            window.addEventListener('scroll', handleScroll);
-            handleScroll();
+            // Запуск таймера
+            function updateTime() {
+                const now = new Date();
+                const timeString = now.toTimeString().split(' ')[0];
+                if (timeElement) timeElement.textContent = timeString;
+            }
             setInterval(updateTime, 1000);
             updateTime();
         });
