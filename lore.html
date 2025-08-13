@@ -103,7 +103,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
+      padding: 10px 15px; /* Відновлено оригінальні відступи */
     }
     
     .logo-link {
@@ -128,7 +128,6 @@
     .project-logo i {
       margin-right: 10px;
       color: var(--accent-primary);
-      animation: pulse-glow 3s infinite ease-in-out;
     }
     
     .nav-menu {
@@ -161,7 +160,6 @@
     .nav-menu li a.active {
       color: var(--accent-primary);
       box-shadow: inset 0 -2px 0 0 var(--accent-primary);
-      animation: flicker-accent 2s infinite;
     }
 
     .nav-menu li a.discord-icon {
@@ -179,6 +177,19 @@
       border: 1px solid var(--border-color);
       padding: 15px;
       box-shadow: 0 0 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(0,0,0,0.7);
+    }
+
+    .pda-entry-header {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px dashed var(--border-color);
+        background: rgba(0,0,0,0.2);
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    .pda-entry-header strong {
+        color: var(--text-primary);
     }
 
     header {
@@ -202,7 +213,7 @@
       justify-content: center;
       gap: 8px;
       padding-bottom: 20px;
-      border-bottom: 1px solid var(--accent-danger);
+      border-bottom: 1px solid var(--accent-danger); /* Повернуто червону обводку */
       margin-bottom: 20px;
     }
     
@@ -273,7 +284,7 @@
     .event-year i {
       margin-right: 10px;
       font-size: 1.2rem;
-      animation: pulse-glow 4s infinite ease-in-out;
+      animation: slow-pulse 5s infinite ease-in-out;
     }
     .era-rumors .event-year i { color: var(--accent-blue); animation-delay: 0s; }
     .era-chaos .event-year i { color: var(--accent-green); animation-delay: 1s; }
@@ -302,10 +313,6 @@
         background: rgba(0,0,0,0.2);
         font-style: italic;
         color: var(--text-primary);
-    }
-    
-    .era-pulse {
-      box-shadow: inset 0 0 15px rgba(255, 77, 77, 0.4);
     }
     
     /* Галерея */
@@ -377,17 +384,18 @@
       color: var(--text-secondary);
       font-size: 0.8rem;
       border-top: 1px solid var(--border-color);
-      text-transform: uppercase;
+    }
+    .copyright {
+        text-transform: uppercase;
+    }
+    .copyright span {
+        color: var(--text-primary);
     }
 
     /* Анімації */
-    @keyframes pulse-glow {
-        0%, 100% { text-shadow: 0 0 5px currentColor; }
-        50% { text-shadow: 0 0 15px currentColor; }
-    }
-    @keyframes flicker-accent {
-        0%, 100% { box-shadow: inset 0 -2px 0 0 var(--accent-primary); }
-        50% { box-shadow: inset 0 -2px 0 0 transparent; }
+    @keyframes slow-pulse {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.15); opacity: 1; }
     }
 
     /* Адаптація */
@@ -432,8 +440,9 @@
         </a>
         
         <ul class="nav-menu">
+          <li><a href="index.html">Головна</a></li>
           <li><a href="rules.html">Правила проекту</a></li>
-          <li><a href="lore.html" class="active">Лор ATP</a></li>
+          <li><a href="lore.html" class="active">Лорна складова</a></li>
           <li><a href="donate.html">Допомога проекту</a></li>
           <li><a href="https://discord.gg/JtmCa3GN" target="_blank" class="discord-icon" title="Наш Discord"><i class="fab fa-discord"></i></a></li>
         </ul>
@@ -441,6 +450,9 @@
     </header>
 
     <div class="pda-screen">
+      <div class="pda-entry-header">
+        <p>// <strong>ЗАПИС #736</strong>: Дані відновлено з пошкодженого КПК, знайденого в районі «Рудого лісу». Власник невідомий. Частина файлів пошкоджена. Нижче наведено розшифровану хронологію подій, зібрану, ймовірно, одним зі сталкерів-дослідників. //</p>
+      </div>
       <header>
         <h1>Хронологія Зони</h1>
       </header>
@@ -470,178 +482,4 @@
           <h3 class="event-title">Епоха чуток та провідників</h3>
           <p>Все почалося з аварії на АЕС у 1986-му, коли була створена «Зона Відчуження», що охоронялася військовими. Для всього світу це місце на довгі роки стало просто радіоактивною плямою на карті, але з часом почали просочуватися дивні, суперечливі чутки про те, чим насправді є Зона.</p>
           <p class="quote">«...коли небо раптом спалахує червоним, і по голові б'є так, що хочеться лізти під землю — починаєш вірити в що завгодно. Спробуй розповісти про це там... покрутять пальцем біля скроні. Таке небо буває тільки тут, ніби це й не Земля зовсім».</p>
-          <p>Подібні чутки та псевдо-таємниці породили «сталкерство» — такий собі потік авантюристів, учених і просто зневірених людей, які прагнули проникнути за колючий дріт. Оскільки офіційного доступу не було, єдиним шляхом усередину стали провідники — люди, які за гроші проводили клієнтів через дірки в охороні.</p>
-          <div class="gallery">
-              <img src="https://placehold.co/600x400/191715/707070?text=Pripyat+View" alt="Вид на Прип'ять" data-gallery="rumors">
-              <img src="https://placehold.co/600x400/191715/707070?text=Abandoned+School" alt="Покинута школа" data-gallery="rumors">
-              <img src="https://placehold.co/600x400/191715/707070?text=Duga+Radar" alt="Радар 'Дуга'" data-gallery="rumors">
-              <img src="https://placehold.co/600x400/191715/707070?text=Gas+Masks" alt="Протигази" data-gallery="rumors">
-          </div>
-        </div>
-
-        <div class="event era-chaos" id="period-2">
-          <div class="event-year"><i class="fas fa-fire"></i> 2012–2014</div>
-          <h3 class="event-title">Період «Хаосу»</h3>
-          <p>Після подій, що призвели до знищення «стабілізатора» в центрі Зони, настало коротке, оманливе затишшя. Здавалося, Зона заспокоїлася. Але саме це затишшя і породило «Хаос» — так цей період прозвали ті, хто жив усередині. Потік людей, що хлинув у «безпечну» Зону, став неконтрольованим.</p>
-          <p>Ті, хто вважав Зону живою, описували цей період інакше. Для них це була агонія. На їхню думку, незліченні «туристи», вчені та мародери своїми діями буквально терзали Зону. Часті катаклізми та агресія місцевої фауни були не випадковістю, а гарячковою реакцією пораненого організму.</p>
-          <div class="gallery">
-              <img src="https://placehold.co/600x400/191715/707070?text=Forest+Anomaly" alt="Лісова аномалія" data-gallery="chaos">
-              <img src="https://placehold.co/600x400/191715/707070?text=Stalker+Camp" alt="Табір сталкерів" data-gallery="chaos">
-              <img src="https://placehold.co/600x400/191715/707070?text=Mutated+Wolf" alt="Мутований вовк" data-gallery="chaos">
-              <img src="https://placehold.co/600x400/191715/707070?text=Scientific+Expedition" alt="Наукова експедиція" data-gallery="chaos">
-          </div>
-        </div>
-        
-        <div class="event era-pulse" id="period-3">
-          <div class="event-year"><i class="fas fa-bolt"></i> 2015</div>
-          <h3 class="event-title">Імпульс</h3>
-          <p>Влітку 2015 року накопичений хаос призвів до події, яку пізніше назвали «Імпульс». Замість спалахів у небі, по всій території пройшла серія потужних, глухих поштовхів з-під землі. Імпульс став першою подією в Зоні, наслідки якої побачив увесь світ.</p>
-          <p>Одразу після поштовхів супутникові системи почали видавати абсурдні дані. Об'єкти на картах змістилися на сотні метрів. Ця інформація миттєво просочилася в інтернет, викликавши бурю теорій про «зсув землі» в Чорнобилі.</p>
-           <div class="gallery">
-              <img src="https://placehold.co/600x400/191715/707070?text=Ground+Crack" alt="Розлом землі" data-gallery="pulse">
-              <img src="https://placehold.co/600x400/191715/707070?text=Shifted+Buildings" alt="Зміщені будівлі" data-gallery="pulse">
-              <img src="https://placehold.co/600x400/191715/707070?text=GPS+Error" alt="Помилка GPS" data-gallery="pulse">
-              <img src="https://placehold.co/600x400/191715/707070?text=Panic" alt="Паніка" data-gallery="pulse">
-          </div>
-        </div>
-        
-        <div class="event era-after-pulse" id="period-4">
-          <div class="event-year"><i class="fas fa-radiation-alt"></i> 2016</div>
-          <h3 class="event-title">«Після Пульсу»</h3>
-          <p>Після Імпульсу настала недовга тиша, але до 2016 року все змінилося. Зона знову стала нагадувати себе в найгірші роки періоду Хаосу. Моторошні спалахи в небі знову гримлять із загрозливою частотою. Рівновагу порушено. Через це влада повністю припинила всі офіційні екскурсії.</p>
-          <p>Але справжні сталкери продовжують жити і працювати всередині. Вони з ворожістю ставляться до всіх новачків, вважаючи, що саме цей новий потік людей знову розлютив Зону. Існує дві думки про причини. Прагматики звинувачують у всьому насування нового саркофага (НБК) на АЕС. Але ті, хто вірить в одухотвореність Зони, вважають, що «Хаос» повернувся, щоб остаточно поглинути все.</p>
-          <div class="gallery">
-              <img src="https://placehold.co/600x400/191715/707070?text=New+Ark" alt="Новий саркофаг" data-gallery="after_pulse">
-              <img src="https://placehold.co/600x400/191715/707070?text=Wary+Stalker" alt="Насторожений сталкер" data-gallery="after_pulse">
-              <img src="https://placehold.co/600x400/191715/707070?text=Stormy+Sky" alt="Грозове небо" data-gallery="after_pulse">
-              <img src="https://placehold.co/600x400/191715/707070?text=Empty+Road" alt="Порожня дорога" data-gallery="after_pulse">
-          </div>
-        </div>
-      </div>
-
-      <div class="footer">
-        <p>Кінець файлу #736</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Структура лайтбоксу -->
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" id="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-image">
-    <a class="lightbox-prev" id="lightbox-prev">&#10094;</a>
-    <a class="lightbox-next" id="lightbox-next">&#10095;</a>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // --- Перемикання вкладок таймлайну ---
-      const periods = document.querySelectorAll('.timeline-period');
-      const contents = document.querySelectorAll('.event');
-      
-      function switchTab(targetId) {
-        contents.forEach(content => content.classList.remove('active'));
-        periods.forEach(period => period.classList.remove('active'));
-
-        const targetContent = document.getElementById(targetId);
-        const activePeriod = document.querySelector(`.timeline-period[data-target="${targetId}"]`);
-        
-        if (targetContent) targetContent.classList.add('active');
-        if (activePeriod) activePeriod.classList.add('active');
-      }
-
-      periods.forEach(period => {
-        period.addEventListener('click', () => {
-          const targetId = period.getAttribute('data-target');
-          switchTab(targetId);
-        });
-      });
-      
-      if (periods.length > 0) {
-        switchTab(periods[0].getAttribute('data-target'));
-      }
-
-      // --- Динамічний час ---
-      const timeElement = document.getElementById('pda-time');
-      function updateTime() {
-          const now = new Date();
-          const timeString = now.toTimeString().split(' ')[0];
-          if (timeElement) timeElement.textContent = timeString;
-      }
-      setInterval(updateTime, 1000);
-      updateTime();
-
-      // --- Логіка лайтбоксу ---
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImage = document.getElementById('lightbox-image');
-      const closeBtn = document.getElementById('lightbox-close');
-      const prevBtn = document.getElementById('lightbox-prev');
-      const nextBtn = document.getElementById('lightbox-next');
-      const galleryImages = document.querySelectorAll('.gallery img');
-      
-      let currentGallery = [];
-      let currentIndex = 0;
-
-      function openLightbox(galleryName, index) {
-          currentGallery = Array.from(document.querySelectorAll(`.gallery img[data-gallery="${galleryName}"]`));
-          currentIndex = index;
-          updateLightboxImage();
-          lightbox.classList.add('active');
-          document.addEventListener('keydown', handleKeyPress);
-      }
-
-      function closeLightbox() {
-          lightbox.classList.remove('active');
-          document.removeEventListener('keydown', handleKeyPress);
-      }
-
-      function updateLightboxImage() {
-          if (currentGallery.length > 0) {
-              lightboxImage.src = currentGallery[currentIndex].src;
-          }
-      }
-
-      function showPrevImage() {
-          currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-          updateLightboxImage();
-      }
-
-      function showNextImage() {
-          currentIndex = (currentIndex + 1) % currentGallery.length;
-          updateLightboxImage();
-      }
-
-      galleryImages.forEach((img, index) => {
-          img.addEventListener('click', () => {
-              const galleryName = img.getAttribute('data-gallery');
-              // Знаходимо індекс картинки всередині її власної галереї
-              const gallerySpecificIndex = Array.from(document.querySelectorAll(`.gallery img[data-gallery="${galleryName}"]`)).indexOf(img);
-              openLightbox(galleryName, gallerySpecificIndex);
-          });
-      });
-
-      closeBtn.addEventListener('click', closeLightbox);
-      prevBtn.addEventListener('click', showPrevImage);
-      nextBtn.addEventListener('click', showNextImage);
-      
-      // Закриття по кліку на фон
-      lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox) {
-              closeLightbox();
-          }
-      });
-
-      // Управління клавішами
-      function handleKeyPress(e) {
-          if (e.key === 'Escape') {
-              closeLightbox();
-          } else if (e.key === 'ArrowLeft') {
-              showPrevImage();
-          } else if (e.key === 'ArrowRight') {
-              showNextImage();
-          }
-      }
-    });
-  </script>
-</body>
-</html>
+          <p>Подібні чутки та псевдо-таємниці породили «сталкерство» — такий собі потік авантюристів, учених і просто зневірених людей, які прагнули проникнути за колючий дріт.
