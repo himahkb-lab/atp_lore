@@ -10,22 +10,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      /* Основна палітра КПК */
-      --pda-bg: #1a1f1a;
-      --pda-bg-lighter: #2a302a;
-      --pda-text: #66ff99;
-      --pda-text-dark: #44aa66;
-      --pda-border: #3a453a;
+      /* Нова палітра кольорів */
+      --bg-main: #0E0D0D;
+      --text-primary: #C6BBAB;
+      --text-secondary: #707070;
+      --border-color: #3A3836;
+      --accent-primary: #D97C01;
       
-      /* Акцентні кольори */
-      --color-warning: #ffb433;
-      --color-danger: #ff4d4d;
-      --color-info: #55aaff;
-      --color-stabilization: #5dffa1;
-      --color-navigation: #3d8b5f;
+      /* Додаткові акцентні кольори */
+      --accent-blue: #7976BB;
+      --accent-green: #39BA8F;
+      --accent-white: #FFFFFF;
       
       /* Тіні та світіння */
-      --glow-text: 0 0 5px var(--pda-text), 0 0 10px rgba(102, 255, 153, 0.5);
+      --glow-text: 0 0 3px var(--text-primary), 0 0 5px rgba(217, 124, 1, 0.3);
     }
 
     * {
@@ -36,8 +34,10 @@
 
     body {
       font-family: 'Anonymous Pro', monospace;
-      background: #111;
-      color: var(--pda-text);
+      background-color: var(--bg-main);
+      background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+      background-size: 6px 6px;
+      color: var(--text-primary);
       line-height: 1.6;
       padding: 20px;
       display: flex;
@@ -74,29 +74,18 @@
       width: 100%;
       max-width: 1000px;
       margin-bottom: 25px;
-      background: var(--pda-bg);
-      border: 2px solid var(--pda-border);
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.7);
       position: relative;
       z-index: 10;
-    }
-    
-    .site-header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-navigation), var(--pda-text), var(--color-navigation));
-      z-index: 11;
     }
     
     .navigation-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 15px;
+      padding: 15px 20px; /* Збільшено вертикальні відступи для симетрії */
     }
     
     .project-logo {
@@ -105,14 +94,14 @@
       font-weight: 700;
       font-size: 1.3rem;
       text-transform: uppercase;
-      color: var(--pda-text);
-      text-shadow: var(--glow-text);
+      color: var(--text-primary);
+      text-shadow: 0 0 5px var(--accent-primary);
       letter-spacing: 1px;
     }
     
     .project-logo i {
       margin-right: 10px;
-      color: var(--color-warning);
+      color: var(--accent-primary);
     }
     
     .nav-menu {
@@ -128,7 +117,7 @@
     .nav-menu li a {
       display: block;
       padding: 10px 15px;
-      color: var(--pda-text-dark);
+      color: var(--text-secondary);
       text-decoration: none;
       text-transform: uppercase;
       font-size: 0.9rem;
@@ -140,16 +129,16 @@
     }
     
     .nav-menu li a:hover {
-      color: var(--pda-text);
-      background: rgba(0, 0, 0, 0.3);
-      border-color: var(--pda-border);
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--border-color);
     }
     
     .nav-menu li a.active {
-      color: var(--pda-text);
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid var(--color-navigation);
-      box-shadow: 0 0 10px rgba(61, 139, 95, 0.4);
+      color: var(--accent-primary);
+      background: rgba(217, 124, 1, 0.1);
+      border: 1px solid var(--accent-primary);
+      box-shadow: 0 0 10px rgba(217, 124, 1, 0.3);
     }
     
     .nav-menu li a.active::after {
@@ -158,16 +147,16 @@
       bottom: -1px;
       left: 0;
       right: 0;
-      height: 3px;
-      background: var(--color-navigation);
+      height: 2px;
+      background: var(--accent-primary);
     }
     
     .pda-screen {
       max-width: 1000px;
       width: 100%;
       margin: 0 auto 20px;
-      background: var(--pda-bg);
-      border: 2px solid var(--pda-border);
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--border-color);
       padding: 15px;
       box-shadow: 0 0 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(0,0,0,0.7);
     }
@@ -176,14 +165,14 @@
       text-align: center;
       padding-bottom: 20px;
       margin-bottom: 20px;
-      border-bottom: 1px solid var(--pda-border);
+      border-bottom: 1px solid var(--border-color);
     }
     
     .pda-status-bar {
       display: flex;
       justify-content: space-between;
       font-size: 0.9rem;
-      color: var(--pda-text-dark);
+      color: var(--text-secondary);
       margin-bottom: 20px;
       padding: 5px;
       background: #00000030;
@@ -194,7 +183,7 @@
       font-size: 2.2rem;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--pda-text);
+      color: var(--text-primary);
       text-shadow: var(--glow-text);
     }
     
@@ -205,31 +194,31 @@
       justify-content: center;
       gap: 8px;
       padding-bottom: 20px;
-      border-bottom: 1px solid var(--pda-border);
+      border-bottom: 1px solid var(--border-color);
       margin-bottom: 20px;
     }
     
     .timeline-period {
-      background: var(--pda-bg-lighter);
-      border: 1px solid var(--pda-border);
-      color: var(--pda-text-dark);
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
       padding: 8px 12px;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+      transition: all 0.2s ease-in-out;
       text-align: center;
       font-family: 'Anonymous Pro', monospace;
       font-size: 0.9rem;
     }
     
     .timeline-period:hover {
-      background: var(--pda-text-dark);
-      color: var(--pda-bg);
+      background: var(--border-color);
+      color: var(--text-primary);
     }
     
     .timeline-period.active {
-      background: var(--pda-text);
-      color: var(--pda-bg);
-      border-color: var(--pda-text);
+      background: var(--accent-primary);
+      color: #000;
+      border-color: var(--accent-primary);
       box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
     }
     
@@ -252,7 +241,7 @@
     .event {
       display: none;
       padding: 20px;
-      border: 1px solid var(--pda-border);
+      border: 1px solid var(--border-color);
       background: #00000020;
       animation: fadeInContent 0.5s forwards;
     }
@@ -270,7 +259,7 @@
       font-weight: 700;
       font-size: 1.1rem;
       margin-bottom: 8px;
-      color: var(--pda-text);
+      color: var(--text-primary);
       display: flex;
       align-items: center;
     }
@@ -278,71 +267,55 @@
       margin-right: 10px;
       font-size: 1.2rem;
     }
-    .year-1986-2005 .event-year i { color: var(--color-info); }
-    .year-2006-2010 .event-year i { color: var(--color-warning); }
-    .year-2013 .event-year i { color: var(--color-danger); }
-    .year-2017-2018 .event-year i { color: var(--color-stabilization); }
+    .era-rumors .event-year i { color: var(--accent-blue); }
+    .era-chaos .event-year i { color: var(--accent-green); }
+    .era-pulse .event-year i { color: var(--color-danger); }
+    .era-after-pulse .event-year i { color: var(--accent-primary); }
 
     .event-title {
       font-weight: 700;
       margin-bottom: 15px;
       font-size: 1.2rem;
-      color: var(--pda-text);
+      color: var(--text-primary);
       padding-bottom: 10px;
-      border-bottom: 1px solid var(--pda-border);
+      border-bottom: 1px solid var(--border-color);
     }
 
     .event p {
-      margin-bottom: 10px;
-      color: var(--pda-text-dark);
+      margin-bottom: 15px;
+      color: var(--text-secondary);
       font-size: 0.95rem;
     }
-
-    .impact-label {
-      display: inline-block;
-      padding: 3px 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-top: 15px;
-      color: var(--pda-text);
-      background: var(--pda-bg-lighter);
-      border: 1px solid var(--pda-border);
-      text-transform: uppercase;
-    }
     
-    .stabilization-event .impact-label {
-      background: rgba(93, 255, 161, 0.15);
-      border-color: var(--color-stabilization);
-      color: var(--color-stabilization);
-    }
-
-    .pulse-event {
-      border-color: var(--color-danger);
-      box-shadow: inset 0 0 10px rgba(255, 77, 77, 0.2);
-    }
-    
-    .stabilization-event {
-      border-color: var(--color-stabilization);
-      box-shadow: inset 0 0 10px rgba(93, 255, 161, 0.2);
+    .event .quote {
+        padding: 10px 15px;
+        margin: 15px 0;
+        border-left: 3px solid var(--border-color);
+        background: rgba(0,0,0,0.2);
+        font-style: italic;
+        color: var(--text-primary);
     }
     
     .footer {
       text-align: center;
       padding: 20px 0 10px;
       margin-top: 20px;
-      color: var(--pda-text-dark);
+      color: var(--text-secondary);
       font-size: 0.8rem;
-      border-top: 1px solid var(--pda-border);
+      border-top: 1px solid var(--border-color);
       text-transform: uppercase;
     }
     .footer .error-code {
-        color: var(--color-warning);
+        color: var(--accent-primary);
         display: block;
         margin-top: 5px;
     }
 
     /* Адаптація для мобільних пристроїв */
     @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
       .navigation-container {
         flex-direction: column;
         padding: 15px;
@@ -362,27 +335,13 @@
         margin: 5px;
       }
       
-      .nav-menu li a {
-        padding: 8px 10px;
-        font-size: 0.8rem;
-      }
-      
       .horizontal-timeline {
         gap: 5px;
       }
       
       .timeline-period {
-        flex: 1;
-        min-width: 120px;
+        flex: 1 1 45%;
         padding: 6px 8px;
-      }
-      
-      .timeline-period .period-date {
-        font-size: 0.9rem;
-      }
-      
-      .timeline-period .period-title {
-        font-size: 0.75rem;
       }
       
       h1 {
@@ -391,21 +350,8 @@
     }
     
     @media (max-width: 480px) {
-      .nav-menu li {
-        margin: 3px;
-      }
-      
-      .nav-menu li a {
-        padding: 6px 8px;
-        font-size: 0.75rem;
-      }
-      
       .timeline-period {
-        min-width: 100px;
-      }
-      
-      .timeline-period .period-date {
-        font-size: 0.8rem;
+        flex: 1 1 100%;
       }
       
       .event {
@@ -417,10 +363,8 @@
 </head>
 <body>
   
-  <!-- Звук кліку буде без джерела, оскільки ми не маємо файлу -->
   <audio id="pda-click-sound" preload="auto"></audio>
 
-  <!-- Навігаційний хедер -->
   <header class="site-header">
     <div class="navigation-container">
       <div class="project-logo">
@@ -454,11 +398,11 @@
       </button>
       <button class="timeline-period" data-target="period-2">
         <span class="period-date">2012-2014</span>
-        <span class="period-title">Період хаосу</span>
+        <span class="period-title">Період «Хаосу»</span>
       </button>
       <button class="timeline-period" data-target="period-3">
         <span class="period-date">2015</span>
-        <span class="period-title">Подія «Пульс»</span>
+        <span class="period-title">Подія «Імпульс»</span>
       </button>
       <button class="timeline-period" data-target="period-4">
         <span class="period-date">2016</span>
@@ -467,50 +411,36 @@
     </nav>
     
     <div class="events-container">
-      <div class="event year-1986-2011" id="period-1">
-        <div class="event-year"><i class="fas fa-shield-alt"></i> 1986–2011</div>
+      <div class="event era-rumors" id="period-1">
+        <div class="event-year"><i class="fas fa-question-circle"></i> 1986–2011</div>
         <h3 class="event-title">Епоха чуток та провідників</h3>
-          <p>Все почалося з аварії на АЕС у 1986-му, коли була створена «Зона Відчуження», що охоронялася військовими. Для всього світу це місце на довгі роки стало просто радіоактивною плямою на карті, але з часом  почали просочуватися дивні, суперечливі чутки про те, чим насправді є Зона.
-          <br>
-          <br> З одного боку, серед цивільних ходили байки та легенди, ніби Зона — це майже живий організм. Ця віра народилася через розповіді тих, хто бував усередині й на собі відчував незрозумілі спалахи в небі. Зовні це довести було неможливо. Як казав один з очевидців:
-          <br>
-          <br>«...коли небо раптом спалахує червоним, і по голові б'є так, що хочеться лізти під землю — починаєш вірити в що завгодно. Спробуй розповісти про це там... покрутять пальцем біля скроні. Таке небо буває тільки тут, ніби це й не Земля зовсім».
-          <br>
-          <br>Подібні чутки та псевдо-таємниці породили «сталкерство» — такий собі потік авантюристів, учених і просто зневірених людей, які прагнули проникнути за колючий дріт. Оскільки офіційного доступу не було, єдиним шляхом усередину стали провідники — люди, які за гроші проводили клієнтів через дірки в охороні.</p>
-        <div class="impact-label">Стабільність</div>
+        <p>Все почалося з аварії на АЕС у 1986-му, коли була створена «Зона Відчуження», що охоронялася військовими. Для всього світу це місце на довгі роки стало просто радіоактивною плямою на карті, але з часом почали просочуватися дивні, суперечливі чутки про те, чим насправді є Зона.</p>
+        <p>З одного боку, серед цивільних ходили байки та легенди, ніби Зона — це майже живий організм. Ця віра народилася через розповіді тих, хто бував усередині й на собі відчував незрозумілі спалахи в небі. Зовні це довести було неможливо. Як казав один з очевидців:</p>
+        <p class="quote">«...коли небо раптом спалахує червоним, і по голові б'є так, що хочеться лізти під землю — починаєш вірити в що завгодно. Спробуй розповісти про це там... покрутять пальцем біля скроні. Таке небо буває тільки тут, ніби це й не Земля зовсім».</p>
+        <p>Подібні чутки та псевдо-таємниці породили «сталкерство» — такий собі потік авантюристів, учених і просто зневірених людей, які прагнули проникнути за колючий дріт. Оскільки офіційного доступу не було, єдиним шляхом усередину стали провідники — люди, які за гроші проводили клієнтів через дірки в охороні.</p>
       </div>
 
-      <div class="event year-2012-2014" id="period-2">
-        <div class="event-year"><i class="fas fa-exclamation-triangle"></i> 2012-2014</div>
+      <div class="event era-chaos" id="period-2">
+        <div class="event-year"><i class="fas fa-fire"></i> 2012–2014</div>
         <h3 class="event-title">Період «Хаосу»</h3>
-        <p>Після подій, що призвели до знищення «стабілізатора» в центрі Зони, настало коротке, оманливе затишшя. Здавалося, Зона заспокоїлася. Але саме це затишшя і породило «Хаос» — так цей період прозвали ті, хто жив усередині. Потік людей, що хлинув у «безпечну» Зону, став неконтрольованим. Десятки груп, переслідуючи свої цілі, діяли наосліп, порушуючи крихкий баланс.
-        <br>
-        <br>Ті, хто вважав Зону живою, описували цей період інакше. Для них це була агонія. На їхню думку, незліченні «туристи», вчені та мародери своїми діями буквально терзали Зону: бурили землю, вторгалися в найпотаємніші її куточки, забирали те, що вона породила. Часті катаклізми та агресія місцевої фауни були не випадковістю, а гарячковою реакцією пораненого організму. Зона намагалася захиститися, але її лише продовжували мучити, посилюючи страждання і наближаючи катастрофу.
-        </p>
-        <div class="impact-label">Початок нестабільності</div>
-      </div>
-
-      <div class="event year-2015 pulse-event" id="period-3">
-        <div class="event-year"><i class="fas fa-bolt"></i> 2015</div>
-        <h3 class="event-title">Імпульс</h3>
-        <p>Влітку 2015 року накопичений хаос призвів до події, яку пізніше назвали «Імпульс». Вона не мала нічого спільного зі звичними спалахами в небі. Замість цього по всій території пройшла серія потужних, глухих поштовхів з-під землі. За розповідями тих небагатьох, хто вижив, це було схоже на те, ніби щось гігантське та живе б'ється об земну кору зсередини. Імпульс став першою подією в Зоні, наслідки якої побачив увесь світ.
-        <br>
-        <br>Одразу після поштовхів супутникові системи, насамперед GPS, почали видавати абсурдні дані. Об'єкти, чиї координати були відомі з точністю до метра — вежі, покинуті будівлі, навіть цілі озера — на картах змістилися на сотні метрів, а то й на кілометри. Ця інформація, підтверджена незалежними джерелами, миттєво просочилася в інтернет і викликала справжню бурю. Форуми та новинні сайти розривалися від теорій про «зсув землі» в Чорнобилі.
-        </p>
-        <div class="impact-label">Переломний момент</div>
+        <p>Після подій, що призвели до знищення «стабілізатора» в центрі Зони, настало коротке, оманливе затишшя. Здавалося, Зона заспокоїлася. Але саме це затишшя і породило «Хаос» — так цей період прозвали ті, хто жив усередині. Потік людей, що хлинув у «безпечну» Зону, став неконтрольованим. Десятки груп, переслідуючи свої цілі, діяли наосліп, порушуючи крихкий баланс.</p>
+        <p>Ті, хто вважав Зону живою, описували цей період інакше. Для них це була агонія. На їхню думку, незліченні «туристи», вчені та мародери своїми діями буквально терзали Зону: бурили землю, вторгалися в найпотаємніші її куточки, забирали те, що вона породила. Часті катаклізми та агресія місцевої фауни були не випадковістю, а гарячковою реакцією пораненого організму. Зона намагалася захиститися, але її лише продовжували мучити, посилюючи страждання і наближаючи катастрофу.</p>
       </div>
       
-      <div class="event year-2016" id="period-4">
-        <div class="event-year"><i class="fas fa-unlink"></i> 2014–2015</div>
+      <div class="event era-pulse" id="period-3">
+        <div class="event-year"><i class="fas fa-bolt"></i> 2015</div>
+        <h3 class="event-title">Імпульс</h3>
+        <p>Влітку 2015 року накопичений хаос призвів до події, яку пізніше назвали «Імпульс». Вона не мала нічого спільного зі звичними спалахами в небі. Замість цього по всій території пройшла серія потужних, глухих поштовхів з-під землі. За розповідями тих небагатьох, хто вижив, це було схоже на те, ніби щось гігантське та живе б'ється об земну кору зсередини. Імпульс став першою подією в Зоні, наслідки якої побачив увесь світ.</p>
+        <p>Одразу після поштовхів супутникові системи, насамперед GPS, почали видавати абсурдні дані. Об'єкти, чиї координати були відомі з точністю до метра — вежі, покинуті будівлі, навіть цілі озера — на картах змістилися на сотні метрів, а то й на кілометри. Ця інформація, підтверджена незалежними джерелами, миттєво просочилася в інтернет і викликала справжню бурю. Форуми та новинні сайти розривалися від теорій про «зсув землі» в Чорнобилі.</p>
+      </div>
+      
+      <div class="event era-after-pulse" id="period-4">
+        <div class="event-year"><i class="fas fa-radiation-alt"></i> 2016</div>
         <h3 class="event-title">«Після Пульсу»</h3>
-        <p>Після Імпульсу настала недовга тиша, але до 2016 року все змінилося. За словами тих, хто перебуває всередині, Зона знову стала нагадувати себе в найгірші роки періоду Хаосу. Моторошні спалахи в небі, які майже припинилися, тепер знову гримлять із загрозливою частотою. Рівновагу порушено. Через це влада повністю припинила всі офіційні екскурсії, щоб не наражати туристів на смертельну загрозу.
-        <br>
-        <br>Але справжні сталкери продовжують жити і працювати всередині. Вони з ворожістю ставляться до всіх новачків, які лізуть за Периметр зараз. Старожили вважають, що саме цей новий потік людей знову розлютив Зону. Існує дві думки про причини того, що відбувається. Прагматики і техніки звинувачують у всьому нещодавнє насування нового саркофага (НБК) на АЕС, вважаючи, що це порушило якесь крихке поле. Але ті, хто вірить в одухотвореність Зони, шепочуться про інше.
-        <br>
-        <br>Вони вважають, що той самий «Хаос», який терзав її кілька років тому, не зник. Він лише зачаївся, і тепер, коли його знову потривожили, він повертається, щоб остаточно поглинути все.
-        </p>
-        <div class="impact-label">Розпад</div>
-      </div>    
+        <p>Після Імпульсу настала недовга тиша, але до 2016 року все змінилося. За словами тих, хто перебуває всередині, Зона знову стала нагадувати себе в найгірші роки періоду Хаосу. Моторошні спалахи в небі, які майже припинилися, тепер знову гримлять із загрозливою частотою. Рівновагу порушено. Через це влада повністю припинила всі офіційні екскурсії, щоб не наражати туристів на смертельну загрозу.</p>
+        <p>Але справжні сталкери продовжують жити і працювати всередині. Вони з ворожістю ставляться до всіх новачків, які лізуть за Периметр зараз. Старожили вважають, що саме цей новий потік людей знову розлютив Зону. Існує дві думки про причини того, що відбувається. Прагматики і техніки звинувачують у всьому нещодавнє насування нового саркофага (НБК) на АЕС, вважаючи, що це порушило якесь крихке поле. Але ті, хто вірить в одухотвореність Зони, шепочуться про інше.</p>
+        <p>Вони вважають, що той самий «Хаос», який терзав її кілька років тому, не зник. Він лише зачаївся, і тепер, коли його знову потривожили, він повертається, щоб остаточно поглинути все.</p>
+      </div>
     </div>
 
     <div class="footer">
@@ -525,13 +455,10 @@
       const contents = document.querySelectorAll('.event');
       const clickSound = document.getElementById('pda-click-sound');
 
-      // Функція для перемикання вкладок
       function switchTab(targetId) {
-        // Ховаємо всі блоки контенту та знімаємо активний клас з кнопок
         contents.forEach(content => content.classList.remove('active'));
         periods.forEach(period => period.classList.remove('active'));
 
-        // Показуємо потрібний блок та робимо кнопку активною
         const targetContent = document.getElementById(targetId);
         const activePeriod = document.querySelector(`.timeline-period[data-target="${targetId}"]`);
         
@@ -543,13 +470,11 @@
         }
       }
 
-      // Додаємо обробники кліків
       periods.forEach(period => {
         period.addEventListener('click', () => {
           const targetId = period.getAttribute('data-target');
           switchTab(targetId);
           
-          // Відтворюємо звук
           if (clickSound) {
             clickSound.currentTime = 0;
             clickSound.play().catch(e => console.error("Не вдалося відтворити звук:", e));
@@ -557,13 +482,11 @@
         });
       });
       
-      // Встановлюємо активною першу вкладку за замовчуванням
       if (periods.length > 0) {
         const initialTargetId = periods[0].getAttribute('data-target');
         switchTab(initialTargetId);
       }
 
-      // Динамічний час у хедері КПК
       const timeElement = document.getElementById('pda-time');
       function updateTime() {
           const now = new Date();
