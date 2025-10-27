@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After the Pulse | Меморіал</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-main: #0E0D0D;
+            --bg-content: #191715;
+            --text-primary: #C6BBAB;
+            --text-secondary: #707070;
+            --border-color: #3A3836;
+            --accent-primary: #D97C01;
+            --accent-danger: #ff4d4d;
+            --accent-discord: #5865F2;
+            --glow-text: 0 0 4px var(--accent-primary);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-primary) var(--border-color);
+        }
+        
+        *::-webkit-scrollbar {
+            height: 4px;
+            width: 4px;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background-color: var(--accent-primary);
+            border-radius: 2px;
+        }
+        *::-webkit-scrollbar-thumb:hover {
+            background-color: var(--text-primary);
+        }
+
+        body {
+            font-family: 'Anonymous Pro', monospace;
+            background-color: var(--bg-main);
+            background-image: radial-gradient(rgba(112, 112, 112, 0.1) 1px, transparent 1px);
+            background-size: 4px 4px;
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+            background-size: 100% 3px;
+            z-index: 1000;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.98; }
+            50% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+
+        .pda-container {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .top-status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 5px 15px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+            flex-wrap: wrap;
+        }
+
+        .site-header {
+            width: 100%;
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .navigation-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+        }
+        
+        .logo-link { text-decoration: none; }
+
+        .project-logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-shadow: 0 0 5px var(--accent-primary);
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .logo-link:hover .project-logo { color: var(--accent-primary); }
+        
+        .project-logo i {
+            margin-right: 10px;
+            color: var(--accent-primary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-menu li { margin-left: 10px; }
+        
+        .nav-menu li a {
+            display: block;
+            padding: 10px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu li a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-menu li a.active {
+            color: var(--accent-primary);
+            box-shadow: inset 0 -2px 0 0 var(--accent-primary);
+        }
+
+        .nav-menu li a.discord-icon {
+            font-size: 1.5rem;
+            padding: 5px 10px;
+        }
+        .nav-menu li a.discord-icon:hover { color: var(--accent-discord); }
+        
+        .pda-screen {
+            width: 100%;
+            margin-top: 25px;
+            background: var(--bg-content);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(0,0,0,0.7);
+        }
+
+        .pda-screen header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pda-screen h1 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-shadow: var(--glow-text);
+        }
+
+        /* --- СТИЛІ СТОРІНКИ "МЕМОРІАЛ" (з rules.html) --- */
+        .rules-layout-wrapper {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .rules-navigation {
+            flex: 0 0 220px;
+            position: sticky;
+            top: 20px;
+            list-style: none;
+            border-right: 1px solid var(--border-color);
+            padding-right: 20px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .rules-navigation a {
+            display: block;
+            padding: 8px 12px;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .rules-navigation a:hover {
+            background: var(--border-color);
+            color: var(--text-primary);
+        }
+        
+        .rules-navigation a.active-nav-link {
+            background: var(--accent-primary);
+            color: #000;
+            border-color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .rules-content-wrapper {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .content h2, .content h3 {
+            color: var(--text-primary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .content h2:first-child {
+             margin-top: 0;
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            text-shadow: var(--glow-text);
+        }
+
+        .content h3 { font-size: 1.2rem; line-height: 1.4; color: var(--accent-primary); }
+
+        .content p, .content li {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .content b {
+            color: var(--text-primary);
+            font-weight: normal;
+        }
+
+        .content ul {
+            list-style-type: none;
+            padding-left: 15px;
+        }
+        
+        .content ul li::before {
+            content: '»';
+            margin-right: 10px;
+            color: var(--accent-primary);
+        }
+        
+        /* Цитата персонажа */
+        .content .quote {
+            padding: 10px 15px;
+            margin: 15px 0 15px 15px;
+            border-left: 3px solid var(--border-color);
+            background: rgba(0,0,0,0.2);
+            font-style: italic;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+        /* --- Кінець стилів --- */
+
+        .footer {
+            text-align: center;
+            padding: 20px 0 10px;
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer span {
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-primary);
+            color: var(--bg-main);
+            width: 45px;
+            height: 45px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.2s;
+            z-index: 999;
+            text-decoration: none;
+            border: 1px solid var(--accent-primary);
+        }
+
+        #scrollToTopBtn.show { opacity: 0.8; visibility: visible; }
+        #scrollToTopBtn:hover { opacity: 1; background-color: var(--text-primary); }
+
+        @media (max-width: 850px) {
+            .rules-layout-wrapper {
+                flex-direction: column;
+            }
+            .rules-navigation {
+                position: sticky;
+                top: 0;
+                z-index: 10;
+                display: flex;
+                flex-direction: row;
+                list-style: none;
+                padding: 15px 0;
+                width: 100%;
+                background: var(--bg-content);
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                max-height: none;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .rules-navigation a {
+                display: inline-block;
+                flex-shrink: 0;
+                margin: 0 4px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .navigation-container { flex-direction: column; padding: 15px; }
+            .project-logo { margin-bottom: 15px; }
+            .nav-menu { width: 100%; justify-content: center; flex-wrap: wrap; }
+            .nav-menu li { margin: 5px; }
+            h1 { font-size: 1.8rem; }
+            
+            #scrollToTopBtn { bottom: 15px; right: 15px; width: 40px; height: 40px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="pda-container">
+        
+        <div class="top-status-bar">
+            <span class="signal">СИГНАЛ: СЛАБКИЙ <i class="fas fa-wifi"></i></span>
+            <span class="time" id="pda-time">--:--:--</span>
+            <span class="battery">ЗАРЯД: 82% <i class="fas fa-battery-three-quarters"></i></span>
+        </div>
+
+        <header class="site-header">
+            <div class="navigation-container">
+                <a href="index.html" class="logo-link">
+                    <div class="project-logo">
+                        <i class="fas fa-radiation"></i>
+                        <span>AFTER THE PULSE</span>
+                    </div>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="rules.html">Правила</a></li>
+                    <li><a href="lore.html">Лор</a></li>
+                    <li><a href="timeline.html">Хронологія</a></li>
+                    <li><a href="memorial.html" class="active">Меморіал</a></li>
+                    <li><a href="donate.html">Допомога</a></li>
+                    <li><a href="https://discord.gg/xw86wFvcVS" target="_blank" class="discord-icon" title="Наш Discord"><i class="fab fa-discord"></i></a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main class="pda-screen">
+            <header>
+                <h1>Меморіал</h1>
+            </header>
+
+            <div class="rules-layout-wrapper">
+                <nav class="rules-navigation" id="memorial-nav-container">
+                    <a href="#grupuvannya">Угруповання</a>
+                    <a href="#stalkers">Вільні Сталкери</a>
+                    <a href="#fallen">Загиблі в Зоні</a>
+                    </nav>
+        
+                <div class="rules-content-wrapper">
+                    <div class="content" id="memorial-content">
+                        
+                        <h2 id="grupuvannya">Угруповання</h2>
+                        
+                        <h3 id="volya">Воля</h3>
+                        <p><b>Опис:</b> Анархістське угруповання, що вірить у вільний доступ до артефактів Зони для всіх. Їхня головна мета — протистояти будь-яким спробам монополізувати Зону, чи то військові, чи то "Обов'язок".</p>
+                        <p><b>Ідеологія:</b> Свобода, братерство, анархія.</p>
+                        <ul>
+                            <li><b>Ключовий персонаж:</b> <a href="#char-che" style="color: var(--accent-primary);">Че</a> (Лідер)</li>
+                            <li><b>Ключовий персонаж:</b> <a href="#char-luk" style="color: var(--accent-primary);">Лука</a> (Ідеолог)</li>
+                        </ul>
+
+                        <h3 id="obovazok">Обов'язок</h3>
+                        <p><b>Опис:</b> Воєнізоване угруповання, що ставить за мету захист світу від небезпек Зони. Вони вважають, що Зону потрібно контролювати, а всі її породження — знищувати.</p>
+                        <p><b>Ідеологія:</b> Дисципліна, контроль, знищення мутантів.</p>
+                        <ul>
+                            <li><b>Ключовий персонаж:</b> Полковник Воронін (Лідер)</li>
+                        </ul>
+                        
+                        <h2 id="stalkers">Вільні Сталкери</h2>
+
+                        <h3 id="char-che">Че</h3>
+                        <p><b>Статус:</b> Лідер угруповання "Воля".</p>
+                        <p><b>Біографія:</b> Колишній революціонер, що знайшов у Зоні ідеальне втілення своїх анархістських ідеалів. Харизматичний, але безжальний до ворогів. Вірить, що Зона — це шанс людства на нове, вільне суспільство.</p>
+                        <p class="quote">"Зона дала нам свободу. Військові хочуть її відібрати. Ми не дозволимо. Ця земля належить усім, хто наважився сюди прийти!"</p>
+
+                        <h3 id="char-luk">Лука</h3>
+                        <p><b>Статус:</b> Ідеолог "Волі", права рука Че.</p>
+                        <p><b>Біографія:</b> Тихий та розважливий, на відміну від імпульсивного Че. Колишній філософ, він бачить у Зоні не просто скарби, а метафізичний феномен. Відповідає за пропаганду та зв'язки з вільними сталкерами.</p>
+                        <p class="quote">"Ми не просто шукаємо артефакти. Ми шукаємо сенс. А 'Обов'язок' хоче залити все бетоном."</p>
+                        
+                        <h2 id="fallen">Загиблі в Зоні</h2>
+                        
+                        <h3>Прізвисько "Сліпий"</h3>
+                        <p><b>Статус:</b> Загинув (2016).</p>
+                        <p><b>Опис:</b> Досвідчений провідник. Завів групу новачків у "М'ясорубку" під час несподіваного викиду. Загинув, прикриваючи відхід одного з них. Його КПК з цінною інформацією про шляхи досі вважається втраченим.</p>
+
+                        </div>
+                    <div class="footer">
+                        <p>© 2025 <span>AFTER THE PULSE</span>. УСІ ПРАВА ЗАХИЩЕНО.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <a href="#" id="scrollToTopBtn" title="Нагору">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timeElement = document.getElementById('pda-time');
+            const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+            const scrollThreshold = 300;
+            
+            // Отримуємо посилання та секції зі сторінки (без JSON)
+            const navLinks = document.querySelectorAll('.rules-navigation a');
+            const sections = document.querySelectorAll('.content h2');
+
+            // Функція для обробки прокрутки
+            function handleScroll() {
+                // Кнопка "нагору"
+                if (window.scrollY > scrollThreshold) {
+                    scrollToTopBtn.classList.add("show");
+                } else {
+                    scrollToTopBtn.classList.remove("show");
+                }
+
+                if (sections.length === 0) return; // Немає секцій для відстеження
+
+                // Підсвітка активного пункту навігації
+                let currentSectionId = '';
+                const contentWrapper = document.querySelector('.rules-content-wrapper');
+                // Зміщення для врахування "липкого" меню на мобільних
+                const offset = window.innerWidth <= 850 ? 150 : 100; 
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= (sectionTop + contentWrapper.offsetTop - offset)) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active-nav-link');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active-nav-link');
+                        
+                        // Авто-прокрутка в мобільному меню
+                         if (window.innerWidth <= 850) {
+                            const navContainer = document.querySelector('.rules-navigation');
+                            navContainer.scroll({
+                                left: link.offsetLeft - navContainer.offsetWidth / 2 + link.offsetWidth / 2,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            }
+            
+            // Плавна прокрутка до якоря
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (targetElement) {
+                        const offset = window.innerWidth <= 850 ? 130 : 80;
+                        window.scrollTo({
+                            top: targetElement.offsetTop - offset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Викликаємо одразу для ініціалізації
+
+            // Прокрутка нагору
+            scrollToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Запуск таймера
+            function updateTime() {
+                const now = new Date();
+                const timeString = now.toTimeString().split(' ')[0];
+                if (timeElement) timeElement.textContent = timeString;
+            }
+            setInterval(updateTime, 1000);
+            updateTime();
+        });
+    </script>
+</body>
+</html>
